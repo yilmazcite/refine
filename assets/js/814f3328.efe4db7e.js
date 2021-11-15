@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[2535],{45641:function(e){e.exports=JSON.parse('{"title":"All posts","items":[{"title":"Create Your Easy Customizable Internal Issue Tracker With Refine and Supabase","permalink":"/blog/customizable-issue-tracker-with-refine-and-supabase"}]}')}}]);

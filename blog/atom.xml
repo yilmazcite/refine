@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+    <id>https://refine.dev/blog</id>
+    <title>refine Blog</title>
+    <updated>2021-11-12T00:00:00.000Z</updated>
+    <generator>https://github.com/jpmonette/feed</generator>
+    <link rel="alternate" href="https://refine.dev/blog"/>
+    <subtitle>refine Blog</subtitle>
+    <icon>https://refine.dev/img/refine_favicon.png</icon>
+    <rights>Copyright © 2021 refine.</rights>
+    <entry>
+        <title type="html"><![CDATA[Create Your Easy Customizable Internal Issue Tracker With Refine and Supabase]]></title>
+        <id>customizable-issue-tracker-with-refine-and-supabase</id>
+        <link href="https://refine.dev/blog/customizable-issue-tracker-with-refine-and-supabase"/>
+        <updated>2021-11-12T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[This is my first post on Docusaurus 2.]]></summary>
+        <author>
+            <name>Melih Ekinci</name>
+            <uri>https://github.com/mlhekinci</uri>
+        </author>
+    </entry>
+</feed>
