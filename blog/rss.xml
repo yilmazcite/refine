@@ -13,7 +13,14 @@
             <link>https://refine.dev/blog/customizable-issue-tracker-with-refine-and-supabase</link>
             <guid>customizable-issue-tracker-with-refine-and-supabase</guid>
             <pubDate>Fri, 12 Nov 2021 00:00:00 GMT</pubDate>
-            <description><![CDATA[This is my first post on Docusaurus 2.]]></description>
+            <description><![CDATA[This web application will  us to create issue and tasks for your team members. You will also be able to choose the priority of these tasks, their tags, and which person to assign them to.]]></description>
+        </item>
+        <item>
+            <title><![CDATA[Migrating a React-Admin Application to Refine]]></title>
+            <link>https://refine.dev/blog/migrating-a-react-admin-application-to-refine</link>
+            <guid>migrating-a-react-admin-application-to-refine</guid>
+            <pubDate>Wed, 06 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Recently, our team decided to migrate a B2B admin panel of one of our customers from React-Admin to refine to battle test our new framework and improve our productivity.]]></description>
         </item>
     </channel>
 </rss>
