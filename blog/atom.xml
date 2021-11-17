@@ -31,6 +31,17 @@
         </author>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Build Fast and Customizable Admin Panel with NestJS.]]></title>
+        <id>customizable-admin-panel-with-nestjs</id>
+        <link href="https://refine.dev/blog/customizable-admin-panel-with-nestjs"/>
+        <updated>2021-10-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We will prepare a simple `job-posting` application. We will also use the refine framework for the admin panel. The project will consist of two parts, api and admin.]]></summary>
+        <author>
+            <name>Yıldıray Ünlü</name>
+            <uri>https://github.com/yildirayunlu</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Create a Feedback Admin panel in 15 Minutes with Refine and Strapi]]></title>
         <id>create-a-feedback-admin-panel-with-refine-and-strapi</id>
         <link href="https://refine.dev/blog/create-a-feedback-admin-panel-with-refine-and-strapi"/>
