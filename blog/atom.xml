@@ -30,4 +30,15 @@
             <uri>https://github.com/miyavsu-limited</uri>
         </author>
     </entry>
+    <entry>
+        <title type="html"><![CDATA[Create a Feedback Admin panel in 15 Minutes with Refine and Strapi]]></title>
+        <id>create-a-feedback-admin-panel-with-refine-and-strapi</id>
+        <link href="https://refine.dev/blog/create-a-feedback-admin-panel-with-refine-and-strapi"/>
+        <updated>2021-10-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We will quickly create an api with Strapi and then develop its frontend with refine. Thus, let's see how an admin panel can be created in a very short time with the perfect harmony of Strapi and refine.]]></summary>
+        <author>
+            <name>Salih Özdemir</name>
+            <uri>https://github.com/salihozdemir</uri>
+        </author>
+    </entry>
 </feed>
