@@ -52,4 +52,15 @@
             <uri>https://github.com/salihozdemir</uri>
         </author>
     </entry>
+    <entry>
+        <title type="html"><![CDATA[Simple Web Application Example with Refine]]></title>
+        <id>simple-web-application-with-refine</id>
+        <link href="https://refine.dev/blog/simple-web-application-with-refine"/>
+        <updated>2021-10-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Do you want to develop a web application quickly? You are at the right place!]]></summary>
+        <author>
+            <name>Aydın Akyol</name>
+            <uri>https://github.com/biskuvit</uri>
+        </author>
+    </entry>
 </feed>

@@ -36,5 +36,12 @@
             <pubDate>Mon, 04 Oct 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[We will quickly create an api with Strapi and then develop its frontend with refine. Thus, let's see how an admin panel can be created in a very short time with the perfect harmony of Strapi and refine.]]></description>
         </item>
+        <item>
+            <title><![CDATA[Simple Web Application Example with Refine]]></title>
+            <link>https://refine.dev/blog/simple-web-application-with-refine</link>
+            <guid>simple-web-application-with-refine</guid>
+            <pubDate>Mon, 04 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Do you want to develop a web application quickly? You are at the right place!]]></description>
+        </item>
     </channel>
 </rss>
