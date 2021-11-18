@@ -37,6 +37,13 @@
             <description><![CDATA[We will quickly create an api with Strapi and then develop its frontend with refine. Thus, let's see how an admin panel can be created in a very short time with the perfect harmony of Strapi and refine.]]></description>
         </item>
         <item>
+            <title><![CDATA[Let's Build an App to Manage Your Hackathons with Refine]]></title>
+            <link>https://refine.dev/blog/manage-hackathons-with-refine</link>
+            <guid>manage-hackathons-with-refine</guid>
+            <pubDate>Mon, 04 Oct 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[We'll be building a demo app to manage hackathons with refine.]]></description>
+        </item>
+        <item>
             <title><![CDATA[Simple Web Application Example with Refine]]></title>
             <link>https://refine.dev/blog/simple-web-application-with-refine</link>
             <guid>simple-web-application-with-refine</guid>

@@ -53,6 +53,17 @@
         </author>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Let's Build an App to Manage Your Hackathons with Refine]]></title>
+        <id>manage-hackathons-with-refine</id>
+        <link href="https://refine.dev/blog/manage-hackathons-with-refine"/>
+        <updated>2021-10-04T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We'll be building a demo app to manage hackathons with refine.]]></summary>
+        <author>
+            <name>Muharrem Kocadere</name>
+            <uri>https://github.com/mhrrmk</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Simple Web Application Example with Refine]]></title>
         <id>simple-web-application-with-refine</id>
         <link href="https://refine.dev/blog/simple-web-application-with-refine"/>
