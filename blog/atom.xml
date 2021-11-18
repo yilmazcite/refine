@@ -20,6 +20,17 @@
         </author>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Create E-mail Subscription Panel with Refine and Strapi]]></title>
+        <id>e-mail-subscription-panel-with-refine</id>
+        <link href="https://refine.dev/blog/e-mail-subscription-panel-with-refine"/>
+        <updated>2021-10-25T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We will make a web application that allows you to quickly create subscribers and send emails to your subscribers in a simple way. We’ll use refine to develop the frontend easily and strapi for backend solutions.]]></summary>
+        <author>
+            <name>Melih Ekinci</name>
+            <uri>https://github.com/mlhekinci</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Migrating a React-Admin Application to Refine]]></title>
         <id>migrating-a-react-admin-application-to-refine</id>
         <link href="https://refine.dev/blog/migrating-a-react-admin-application-to-refine"/>
