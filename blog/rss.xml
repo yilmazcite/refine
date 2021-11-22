@@ -30,7 +30,7 @@
             <description><![CDATA[Recently, our team decided to migrate a B2B admin panel of one of our customers from React-Admin to refine to battle test our new framework and improve our productivity.]]></description>
         </item>
         <item>
-            <title><![CDATA[Build Fast and Customizable Admin Panel with NestJS.]]></title>
+            <title><![CDATA[Build Fast and Customizable Admin Panel with NestJS]]></title>
             <link>https://refine.dev/blog/customizable-admin-panel-with-nestjs</link>
             <guid>customizable-admin-panel-with-nestjs</guid>
             <pubDate>Mon, 04 Oct 2021 00:00:00 GMT</pubDate>
