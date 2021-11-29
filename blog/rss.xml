@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Fri, 12 Nov 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 26 Nov 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2021 refine.</copyright>
+        <item>
+            <title><![CDATA[Refine vs React-Admin Which is Better for Your Project?]]></title>
+            <link>https://refine.dev/blog/refine-vs-react-admin-which-is-better-for-your-project</link>
+            <guid>refine-vs-react-admin-which-is-better-for-your-project</guid>
+            <pubDate>Fri, 26 Nov 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[We will compare the features of refine and react-admin]]></description>
+        </item>
         <item>
             <title><![CDATA[Create Your Easy Customizable Internal Issue Tracker With Refine and Supabase]]></title>
             <link>https://refine.dev/blog/customizable-issue-tracker-with-refine-and-supabase</link>
