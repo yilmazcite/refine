@@ -4,14 +4,21 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Fri, 26 Nov 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 29 Nov 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2021 refine.</copyright>
         <item>
+            <title><![CDATA[Refine vs AdminBro - Comparison Admin Panel Framework]]></title>
+            <link>https://refine.dev/blog/refine-vs-adminbro</link>
+            <guid>refine-vs-adminbro</guid>
+            <pubDate>Mon, 29 Nov 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Refine vs AdminBro]]></description>
+        </item>
+        <item>
             <title><![CDATA[Refine vs React-Admin Which is Better for Your Project?]]></title>
-            <link>https://refine.dev/blog/refine-vs-react-admin-which-is-better-for-your-project</link>
-            <guid>refine-vs-react-admin-which-is-better-for-your-project</guid>
+            <link>https://refine.dev/blog/refine-vs-react-admin</link>
+            <guid>refine-vs-react-admin</guid>
             <pubDate>Fri, 26 Nov 2021 00:00:00 GMT</pubDate>
             <description><![CDATA[We will compare the features of refine and react-admin]]></description>
         </item>
