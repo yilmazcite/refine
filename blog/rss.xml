@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Mon, 29 Nov 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 13 Dec 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2021 refine.</copyright>
+        <item>
+            <title><![CDATA[Web3 with Refine]]></title>
+            <link>https://refine.dev/blog/web3-with-refine</link>
+            <guid>web3-with-refine</guid>
+            <pubDate>Mon, 13 Dec 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Sign-in Ethereum with Web3 and Refine]]></description>
+        </item>
         <item>
             <title><![CDATA[Refine vs AdminBro - Comparison Admin Panel Framework]]></title>
             <link>https://refine.dev/blog/refine-vs-adminbro</link>
