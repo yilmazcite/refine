@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Mon, 13 Dec 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 22 Dec 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2021 refine.</copyright>
+        <item>
+            <title><![CDATA[How to upload files from your HTML form using Base64 encoding]]></title>
+            <link>https://refine.dev/blog/how-to-base64-upload</link>
+            <guid>how-to-base64-upload</guid>
+            <pubDate>Wed, 22 Dec 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[Uploading files using Base64 encoding is a common practice. In this guide, I'm going to show you how to upload files using base64 encoding]]></description>
+        </item>
         <item>
             <title><![CDATA[Web3 with Refine]]></title>
             <link>https://refine.dev/blog/web3-with-refine</link>

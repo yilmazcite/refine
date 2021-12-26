@@ -2,12 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://refine.dev/blog</id>
     <title>refine Blog</title>
-    <updated>2021-12-13T00:00:00.000Z</updated>
+    <updated>2021-12-22T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://refine.dev/blog"/>
     <subtitle>refine Blog</subtitle>
     <icon>https://refine.dev/img/refine_favicon.png</icon>
     <rights>Copyright © 2021 refine.</rights>
+    <entry>
+        <title type="html"><![CDATA[How to upload files from your HTML form using Base64 encoding]]></title>
+        <id>how-to-base64-upload</id>
+        <link href="https://refine.dev/blog/how-to-base64-upload"/>
+        <updated>2021-12-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Uploading files using Base64 encoding is a common practice. In this guide, I'm going to show you how to upload files using base64 encoding]]></summary>
+        <author>
+            <name>Melih Ekinci</name>
+            <uri>https://github.com/mlhekinci</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Web3 with Refine]]></title>
         <id>web3-with-refine</id>
