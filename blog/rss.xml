@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Wed, 22 Dec 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 27 Dec 2021 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2021 refine.</copyright>
+        <item>
+            <title><![CDATA[How to Multipart File Upload Using FormData with HTML]]></title>
+            <link>https://refine.dev/blog/how-to-multipart-upload</link>
+            <guid>how-to-multipart-upload</guid>
+            <pubDate>Mon, 27 Dec 2021 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this guide, I'm going to show you how to multipart files upload with using HTML and JavaScript]]></description>
+        </item>
         <item>
             <title><![CDATA[How to upload files from your HTML form using Base64 encoding]]></title>
             <link>https://refine.dev/blog/how-to-base64-upload</link>
