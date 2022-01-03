@@ -7,7 +7,7 @@
     <link rel="alternate" href="https://refine.dev/blog"/>
     <subtitle>refine Blog</subtitle>
     <icon>https://refine.dev/img/refine_favicon.png</icon>
-    <rights>Copyright © 2021 refine.</rights>
+    <rights>Copyright © 2022 refine.</rights>
     <entry>
         <title type="html"><![CDATA[How to Multipart File Upload Using FormData with HTML]]></title>
         <id>how-to-multipart-upload</id>
