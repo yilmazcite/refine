@@ -17,6 +17,7 @@ import {
     useGetIdentity,
     useTranslate,
     useList,
+    Radio,
 } from "@pankod/refine";
 import RefineReactRouter from "@pankod/refine-react-router";
 
@@ -41,7 +42,12 @@ interface IOptions {
     options: IOptionGroup[];
 }
 
-export const Header: React.FC = () => {
+interface HeaderProps {
+    role: string;
+    setRole: React.Dispatch<React.SetStateAction<string>>;
+}
+
+export const Header: React.FC<HeaderProps> = ({ role, setRole }) => {
     const { i18n } = useTranslation();
     const locale = useGetLocale();
     const changeLanguage = useSetLocale();
@@ -209,6 +215,15 @@ export const Header: React.FC = () => {
                             suffix={<SearchOutlined />}
                         />
                     </AutoComplete>
+                </Col>
+                <Col xs={0} sm={0} xl={6}>
+                    <Radio.Group
+                        value={role}
+                        onChange={(event) => setRole(event.target.value)}
+                    >
+                        <Radio.Button value="admin">Admin</Radio.Button>
+                        <Radio.Button value="editor">Editor</Radio.Button>
+                    </Radio.Group>
                 </Col>
                 <Col>
                     <Space size="middle">

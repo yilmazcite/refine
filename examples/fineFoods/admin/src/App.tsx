@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import routerProvider from "@pankod/refine-react-router";
 import { Refine, Icons } from "@pankod/refine";
 import jsonServerDataProvider from "@pankod/refine-simple-rest";
@@ -49,13 +49,15 @@ const App: React.FC = () => {
         }
     }, [locale]);
 
+    const [role, setRole] = useState("admin");
+
     return (
         <Refine
             routerProvider={routerProvider}
             dataProvider={dataProvider}
             authProvider={authProvider}
             i18nProvider={i18nProvider}
-            Header={Header}
+            Header={() => <Header role={role} setRole={setRole} />}
             Title={Title}
             OffLayoutArea={OffLayoutArea}
             DashboardPage={DashboardPage}
