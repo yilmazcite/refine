@@ -1,0 +1,140 @@
+{
+    "version": "https://jsonfeed.org/version/1",
+    "title": "refine Blog",
+    "home_page_url": "https://refine.dev/blog",
+    "description": "refine Blog",
+    "items": [
+        {
+            "id": "how-to-multipart-upload",
+            "url": "https://refine.dev/blog/how-to-multipart-upload",
+            "title": "How to Multipart File Upload Using FormData with HTML",
+            "summary": "In this guide, I'm going to show you how to multipart files upload with using HTML and JavaScript",
+            "date_modified": "2021-12-27T00:00:00.000Z",
+            "author": {
+                "name": "Melih Ekinci",
+                "url": "https://github.com/mlhekinci"
+            }
+        },
+        {
+            "id": "how-to-base64-upload",
+            "url": "https://refine.dev/blog/how-to-base64-upload",
+            "title": "How to upload files from your HTML form using Base64 encoding",
+            "summary": "Uploading files using Base64 encoding is a common practice. In this guide, I'm going to show you how to upload files using base64 encoding",
+            "date_modified": "2021-12-22T00:00:00.000Z",
+            "author": {
+                "name": "Melih Ekinci",
+                "url": "https://github.com/mlhekinci"
+            }
+        },
+        {
+            "id": "web3-with-refine",
+            "url": "https://refine.dev/blog/web3-with-refine",
+            "title": "Web3 with Refine",
+            "summary": "Sign-in Ethereum with Web3 and Refine",
+            "date_modified": "2021-12-13T00:00:00.000Z",
+            "author": {
+                "name": "Melih Ekinci",
+                "url": "https://github.com/mlhekinci"
+            }
+        },
+        {
+            "id": "refine-vs-adminbro",
+            "url": "https://refine.dev/blog/refine-vs-adminbro",
+            "title": "Refine vs AdminBro - Comparison Admin Panel Framework",
+            "summary": "Refine vs AdminBro",
+            "date_modified": "2021-11-29T00:00:00.000Z",
+            "author": {
+                "name": "Melih Ekinci",
+                "url": "https://github.com/mlhekinci"
+            }
+        },
+        {
+            "id": "refine-vs-react-admin",
+            "url": "https://refine.dev/blog/refine-vs-react-admin",
+            "title": "Refine vs React-Admin Which is Better for Your Project?",
+            "summary": "We will compare the features of refine and react-admin",
+            "date_modified": "2021-11-26T00:00:00.000Z",
+            "author": {
+                "name": "Melih Ekinci",
+                "url": "https://github.com/mlhekinci"
+            }
+        },
+        {
+            "id": "customizable-issue-tracker-with-refine-and-supabase",
+            "url": "https://refine.dev/blog/customizable-issue-tracker-with-refine-and-supabase",
+            "title": "Create Your Easy Customizable Internal Issue Tracker With Refine and Supabase",
+            "summary": "This web application will  us to create issue and tasks for your team members. You will also be able to choose the priority of these tasks, their tags, and which person to assign them to.",
+            "date_modified": "2021-11-12T00:00:00.000Z",
+            "author": {
+                "name": "Melih Ekinci",
+                "url": "https://github.com/mlhekinci"
+            }
+        },
+        {
+            "id": "e-mail-subscription-panel-with-refine",
+            "url": "https://refine.dev/blog/e-mail-subscription-panel-with-refine",
+            "title": "Create E-mail Subscription Panel with Refine and Strapi",
+            "summary": "We will make a web application that allows you to quickly create subscribers and send emails to your subscribers in a simple way. We’ll use refine to develop the frontend easily and strapi for backend solutions.",
+            "date_modified": "2021-10-25T00:00:00.000Z",
+            "author": {
+                "name": "Melih Ekinci",
+                "url": "https://github.com/mlhekinci"
+            }
+        },
+        {
+            "id": "migrating-a-react-admin-application-to-refine",
+            "url": "https://refine.dev/blog/migrating-a-react-admin-application-to-refine",
+            "title": "Migrating a React-Admin Application to Refine",
+            "summary": "Recently, our team decided to migrate a B2B admin panel of one of our customers from React-Admin to refine to battle test our new framework and improve our productivity.",
+            "date_modified": "2021-10-06T00:00:00.000Z",
+            "author": {
+                "name": "Umut Özdemir",
+                "url": "https://github.com/miyavsu-limited"
+            }
+        },
+        {
+            "id": "customizable-admin-panel-with-nestjs",
+            "url": "https://refine.dev/blog/customizable-admin-panel-with-nestjs",
+            "title": "Build Fast and Customizable Admin Panel with NestJS",
+            "summary": "We will prepare a simple `job-posting` application. We will also use the refine framework for the admin panel. The project will consist of two parts, api and admin.",
+            "date_modified": "2021-10-04T00:00:00.000Z",
+            "author": {
+                "name": "Yıldıray Ünlü",
+                "url": "https://github.com/yildirayunlu"
+            }
+        },
+        {
+            "id": "create-a-feedback-admin-panel-with-refine-and-strapi",
+            "url": "https://refine.dev/blog/create-a-feedback-admin-panel-with-refine-and-strapi",
+            "title": "Create a Feedback Admin panel in 15 Minutes with Refine and Strapi",
+            "summary": "We will quickly create an api with Strapi and then develop its frontend with refine. Thus, let's see how an admin panel can be created in a very short time with the perfect harmony of Strapi and refine.",
+            "date_modified": "2021-10-04T00:00:00.000Z",
+            "author": {
+                "name": "Salih Özdemir",
+                "url": "https://github.com/salihozdemir"
+            }
+        },
+        {
+            "id": "manage-hackathons-with-refine",
+            "url": "https://refine.dev/blog/manage-hackathons-with-refine",
+            "title": "Let's Build an App to Manage Your Hackathons with Refine",
+            "summary": "We'll be building a demo app to manage hackathons with refine.",
+            "date_modified": "2021-10-04T00:00:00.000Z",
+            "author": {
+                "name": "Muharrem Kocadere",
+                "url": "https://github.com/mhrrmk"
+            }
+        },
+        {
+            "id": "simple-web-application-with-refine",
+            "url": "https://refine.dev/blog/simple-web-application-with-refine",
+            "title": "Simple Web Application Example with Refine",
+            "summary": "Do you want to develop a web application quickly? You are at the right place!",
+            "date_modified": "2021-10-04T00:00:00.000Z",
+            "author": {
+                "name": "Aydın Akyol",
+                "url": "https://github.com/biskuvit"
+            }
+        }
+    ]
+}
