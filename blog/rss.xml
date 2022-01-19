@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Mon, 27 Dec 2021 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 18 Jan 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[How to Import CSV File with React]]></title>
+            <link>https://refine.dev/blog/how-to-import-csv</link>
+            <guid>how-to-import-csv</guid>
+            <pubDate>Tue, 18 Jan 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this guide, I will show you how to import CSV files using React and JavaScript.]]></description>
+        </item>
         <item>
             <title><![CDATA[How to Multipart File Upload Using FormData with HTML]]></title>
             <link>https://refine.dev/blog/how-to-multipart-upload</link>
