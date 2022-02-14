@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Tue, 18 Jan 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Sat, 12 Feb 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[Implementing Dark Mode In Ant Design Using gulp]]></title>
+            <link>https://refine.dev/blog/how-to-add-darkmode-in-ant-design</link>
+            <guid>how-to-add-darkmode-in-ant-design</guid>
+            <pubDate>Sat, 12 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this article, we’ll learn how to efficiently implement dark mode in a Refine/Ant Design app, using gulp library and leveraging some React features like hooks]]></description>
+        </item>
         <item>
             <title><![CDATA[How to Import CSV File with React]]></title>
             <link>https://refine.dev/blog/how-to-import-csv</link>
