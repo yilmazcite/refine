@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Sat, 12 Feb 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 14 Feb 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[Next.js E-commerce App with Strapi and Chakra UI]]></title>
+            <link>https://refine.dev/blog/refine-ecommerce</link>
+            <guid>refine-ecommerce</guid>
+            <pubDate>Mon, 14 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn the power of Refine for e-commerce with this quick & easy example. This step-by-step Refine SPA tutorial will get you started in no time.]]></description>
+        </item>
         <item>
             <title><![CDATA[Implementing Dark Mode In Ant Design Using gulp]]></title>
             <link>https://refine.dev/blog/how-to-add-darkmode-in-ant-design</link>
