@@ -10,8 +10,8 @@
     <rights>Copyright © 2022 refine.</rights>
     <entry>
         <title type="html"><![CDATA[Next.js E-commerce App with Strapi and Chakra UI]]></title>
-        <id>handcrafted-nextjs-e-commerce-app-strapi-chakra-ui</id>
-        <link href="https://refine.dev/blog/handcrafted-nextjs-e-commerce-app-strapi-chakra-ui"/>
+        <id>handcrafted-nextjs-e-commerce-app-tutorial-strapi-chakra-ui</id>
+        <link href="https://refine.dev/blog/handcrafted-nextjs-e-commerce-app-tutorial-strapi-chakra-ui"/>
         <updated>2022-02-14T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Learn the power of Refine for e-commerce with this quick & easy example. This step-by-step Refine SPA tutorial will get you started in no time.]]></summary>
         <author>
