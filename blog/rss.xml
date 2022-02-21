@@ -9,6 +9,161 @@
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
         <item>
+            <title><![CDATA[Build internal tools using Low-Code with Refine, React-based framework]]></title>
+            <link>https://refine.dev/blog/build-internal-tools-using-low-code-with-refine</link>
+            <guid>build-internal-tools-using-low-code-with-refine</guid>
+            <pubDate>Mon, 21 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Why you should be using low-code app Refine to build internal tools? Learn how to build low-code apps using Refine, React and Ant Design.]]></description>
+            <content:encoded><![CDATA[<p>When it comes to creating internal tools, low-code platforms are the way to go. With Refine, a React-based low-code platform, you can quickly build data-intensive applications without having to worry about scalability or ease of use. Other low-code platforms may allow you to develop your applications, but they are often limited in terms of flexibility and customizability. With Refine, you have full control over your application and can add any business logic that you need. So if you&#x27;re looking for a platform that will let you build internal tools quickly and easily, Refine is the right choice!</p><h2>What is Refine?</h2><p>Refine is a React-based headless framework that allows you to build data-intensive applications quickly and with ease. Rapid development and headless at the same time how is it? Well, Refine supports <a href="https://ant.design">Ant Design</a> for quick and easy solutions. In addition, it allows you to use your design system, or to integrate with other popular design frameworks.</p><p>Refer to the <a href="https://refine.dev">Refine</a> for more information.</p><h2>Why you should use Refine?</h2><ul><li>It is Open Source under the MIT license.</li><li>Easy to use and it is easy to learn. There are many examples to help you get started, as well as documentation.</li><li>Is a framework that does not require you to use any UI libraries or frameworks.</li><li>Supports Ant Design for quick and easy solutions.</li><li>Backend agnostic, so you can connect to any backend you want.</li><li>Customizable, which means you can change it to fit your needs.</li><li>Refine is fully compatible with server side rendering with <a href="https://nextjs.org">Next.js</a>.</li></ul><h2>Features of Refine</h2><p>Some of the main features of Refine are:</p><ul><li>Data fetching and state management</li><li>Routings</li><li>Authentication</li><li>Authorization</li><li>Internationalization</li><li>Real-time</li><li>Mutation modes with optimistic and pessimistic and undoadable modes</li></ul><h2>How does Refine work?</h2><p>Refine is completely agnostic; just wrap your application with the Refine component and pass the property you need. For example, it takes properties such as <code>dataProvider</code> to communicate with the API and <code>authProvider</code> to authentication. Then you have hooks that you can use throughout the whole application. These hooks are compatible with <a href="https://react-query.tanstack.com">React Query</a>.</p><p>To understand how Refine works, let&#x27;s explore the following titles:</p><h2>Communicate with the API</h2><p>The <code>dataProvider</code> allows communication with the API. All the data fetching and mutations are done through this property.</p><p>A data provider must have the following properties:</p><pre><code class="language-tsx">const dataProvider = {
+    create: ({ resource, variables, metaData }) =&gt; Promise,
+    createMany: ({ resource, variables, metaData }) =&gt; Promise,
+    deleteOne: ({ resource, id, metaData }) =&gt; Promise,
+    deleteMany: ({ resource, ids, metaData }) =&gt; Promise,
+    getList: ({ resource, pagination, sort, filters, metaData }) =&gt; Promise,
+    getMany: ({ resource, ids, metaData }) =&gt; Promise,
+    getOne: ({ resource, id, metaData }) =&gt; Promise,
+    update: ({ resource, id, variables, metaData }) =&gt; Promise,
+    updateMany: ({ resource, ids, variables, metaData }) =&gt; Promise,
+};
+</code></pre><p>Refine offers hooks to help you with data fetching and mutations using the data provider&#x27;s properties. For example, when you use the <code>useTable</code> or <code>useList</code> hook, it will call the <code>getList</code> method underneath the hood.</p><p>Refer to the <a href="https://refine.dev/docs/ui-frameworks/antd/hooks/table/useTable/"><code>useTable</code></a> and <a href="https://refine.dev/docs/core/hooks/data/useCreate/">data hooks</a> for more information.</p><p>For example, let&#x27;s look at what happens when <code>useTable</code> is called.</p><pre><code class="language-tsx">import { List, Table, TextField, useTable } from &quot;@pankod/refine-antd&quot;;
+
+interface IPost {
+    id: string;
+    title: string;
+    content: string;
+    status: &quot;published&quot; | &quot;draft&quot; | &quot;rejected&quot;;
+}
+
+export const PostList: React.FC = () =&gt; {
+    const { tableProps } = useTable({
+        resource: &quot;posts&quot;,
+        initialSorter: [
+            {
+                field: &quot;title&quot;,
+                order: &quot;asc&quot;,
+            },
+        ],
+        initialFilter: [
+            {
+                field: &quot;status&quot;,
+                operator: &quot;eq&quot;,
+                value: &quot;draft&quot;,
+            },
+        ],
+    });
+
+    return (
+        &lt;List&gt;
+            &lt;Table {...tableProps} rowKey=&quot;id&quot;&gt;
+                &lt;Table.Column dataIndex=&quot;id&quot; title=&quot;ID&quot; /&gt;
+                &lt;Table.Column dataIndex=&quot;title&quot; title=&quot;Title&quot; /&gt;
+                &lt;Table.Column dataIndex=&quot;content&quot; title=&quot;Content&quot; /&gt;
+            &lt;/Table&gt;
+        &lt;/List&gt;
+    );
+};
+</code></pre><p>The <code>useTable</code> in the example calls the <code>getList</code> method of the data provider with the following properties:</p><pre><code class="language-ts">getList({
+    resource: &quot;posts&quot;,
+    pagination: {
+        page: 1,
+        perPage: 10,
+    },
+    sort: [
+        {
+            field: &quot;title&quot;,
+            order: &quot;asc&quot;,
+        },
+    ],
+    filters: [
+        {
+            field: &quot;status&quot;,
+            operator: &quot;eq&quot;,
+            value: &quot;draft&quot;,
+        },
+    ],
+});
+</code></pre><p>With <code>metaData</code> you can pass any parameters that you need to the data provider. You can handle it in the data provider.</p><p>All hooks that use data provider methods such as <code>useTable</code> work with <a href="https://react-query.tanstack.com">React Query</a>. So you can use all the features of React Query.</p><p>Refer to the <a href="https://refine.dev/docs/core/providers/data-provider"><code>dataProvider</code></a> for more information.</p><h3>Out-of-the-box data providers</h3><p>Refine includes many out-of-the-box data providers to use in your projects like:</p><ul><li><a href="https://github.com/pankod/refine/tree/master/packages/simple-rest">Simple REST API</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/graphql">GraphQL</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/nestjsx-crud">NestJS CRUD</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/airtable">Airtable</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/strapi">Strapi</a> - <a href="https://github.com/pankod/refine/tree/master/packages/strapi-v4">Strapi v4</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/strapi-graphql">Strapi GraphQL</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/supabase">Supabase</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/hasura">Hasura</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/appwrite">Appwrite</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/altogic">Altogic</a></li></ul><h2>Add routing to the application</h2><p>Refine needs some router functions to create resource pages, navigation, and so on. It uses the <code>routerProvider</code> property to pass the router functions to Refine. In this way, it allows you to use any router library that you want.</p><p>If you don&#x27;t need any customization in your router, we not recommend making this provider. Instead, try <code>nextjs-router</code> for your Next.js project and <code>react-router</code> or <code>react-location</code> for your React project.</p><p>Refer to the <a href="https://refine.dev/docs/core/providers/router-provider"><code>routerProvider</code></a> for more information.</p><h3>Out-of-the-box router providers</h3><p>Refine includes many out-of-the-box data providers to use in your projects like:</p><ul><li><a href="https://github.com/pankod/refine/tree/master/packages/react-router">React Router</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/react-location">React Location</a></li><li><a href="https://github.com/pankod/refine/tree/master/packages/nextjs-router">Next.js Router</a></li></ul><h2>Create pages via <code>resources</code></h2><p>The main building blocks of a Refine app are <code>resources</code>. A resource is an entity in the API&#x27;s endpoint (e.g., <a href="https://api.fake-rest.refine.dev/posts">https://api.fake-rest.refine.dev/posts</a>). It connects data from the API with page components, allowing pages to access data from the API.</p><pre><code class="language-tsx">import { Refine } from &quot;@pankod/refine-core&quot;;
+import dataProvider from &quot;@pankod/refine-json-server&quot;;
+import &quot;@pankod/refine-antd/dist/styles.min.css&quot;;
+
+import { PostList, PostCreate, PostEdit, PostShow } from &quot;pages/posts&quot;;
+
+const App: React.FC = () =&gt; {
+    return (
+        &lt;Refine
+            dataProvider={dataProvider(&quot;https://api.fake-rest.refine.dev&quot;)}
+            resources={[
+                {
+                    name: &quot;posts&quot;,
+                    list: PostList,
+                    create: PostCreate,
+                    edit: PostEdit,
+                    show: PostShow,
+                },
+            ]}
+        /&gt;
+    );
+};
+
+export default App;
+</code></pre><p>Each resource component is assigned a route by Refine. The <code>/posts</code> route, for example, displays the list page of the <code>posts</code> resource, which is implemented using the <code>PostList</code> component. The <code>PostCreate</code> component is the create page of the <code>posts</code> resource and it is rendered by the <code>/posts/create</code> route. The <code>PostEdit</code> component is the edit page of the <code>posts</code> resource and it is rendered by the <code>/posts/edit/:id</code> route. The <code>PostShow</code> component is the show page of the <code>posts</code> resource and it is rendered by the <code>/posts/show/:id</code> route.</p><p>Refine hooks used in these pages read some values from the route by default. For example, <code>useForm</code> hook takes the <code>resource</code>, <code>action</code>, and <code>id</code> from the route by default.</p><h2>Authentication</h2><p>The <code>authProvider</code> allows you to add authentication your application. You can use any authentication library that you want. All your authentication logic is managed with this <code>authProvider</code>.</p><p>A auth provider must have the following properties:</p><pre><code class="language-tsx">const authProvider = {
+    login: () =&gt; Promise,
+    logout: () =&gt; Promise,
+    checkAuth: () =&gt; Promise,
+    checkError: () =&gt; Promise,
+    getPermissions: () =&gt; Promise,
+    getUserIdentity: () =&gt; Promise,
+};
+</code></pre><p>Refine uses these methods via <a href="https://refine.dev/docs/core/hooks/auth/useLogin/">authorization hooks</a>. Authentication and authorization procedures such as login, logout, checking user credentials, and catching HTTP errors are all handled using authorization hooks. For example, <code>checkAuth</code>is called when the user tries to access a page that requires authentication.</p><p>Refer to the <a href="https://refine.dev/docs/core/providers/auth-provider"><code>authProvider</code></a> for more information.</p><h3>Out-of-the-box router providers</h3><ul><li>Auth0 - <a href="https://github.com/pankod/refine/tree/master/examples/authProvider/auth0/">Source Code</a> - <a href="https://refine.dev/docs/examples/auth-provider/auth0">Demo</a></li><li>Google - <a href="https://github.com/pankod/refine/tree/master/examples/authProvider/googleLogin">Source Code</a> - <a href="https://refine.dev/docs/examples/auth-provider/google-auth">Demo</a></li><li>OTP Login - <a href="https://github.com/pankod/refine/tree/master/examples/authProvider/otpLogin">Source Code</a> - <a href="https://refine.dev/docs/examples/auth-provider/otpLogin">Demo</a></li></ul><h2>Authorization</h2><p>Refine provides <code>accessControlProvider</code> that you can use to control who has access to what in your app. You can use any access control library that you want. In addition, you can choose the access control models that work best for you (RBAC, ABAC, ACL, etc.).</p><p>An <code>accessControlProvider</code> must have one async method called <code>can</code> to check if the person asking for access is allowed to have it.</p><pre><code class="language-tsx">type CanParams = {
+    resource: string;
+    action: string;
+    params?: any;
+};
+
+type CanReturnType = {
+    can: boolean;
+    reason?: string;
+}
+
+const accessControlProvider = {
+    can: ({ resource, action, params }: CanParams) =&gt; Promise&lt;CanReturnType&gt;;
+}
+</code></pre><p><a href="https://refine.dev/docs/core/hooks/accessControl/useCan"><code>useCan</code></a> and <a href="https://refine.dev/docs/core/components/accessControl/can-access/"><code>&lt;CanAccess&gt;</code></a> component use this method to check if the user is allowed to access.</p><p>For example, we can stop non-admin users from editing the post resource.</p><pre><code class="language-tsx">const App: React.FC = () =&gt; {
+    &lt;Refine
+        accessControlProvider={{
+            can: async ({ resource, action, params }) =&gt; {
+                if (resource === &quot;posts&quot; &amp;&amp; action === &quot;edit&quot;) {
+                    const userRole = getUserRole();
+
+                    if (userRole === &quot;admin&quot;) {
+                        return { can: true };
+                    }
+
+                    return Promise.resolve({
+                        can: false,
+                        reason: &quot;Unauthorized&quot;,
+                    });
+                }
+
+                return Promise.resolve({ can: true });
+            },
+        }}
+    /&gt;;
+};
+</code></pre><p>Refer to the <a href="https://refine.dev/docs/core/providers/accessControl-provider"><code>accessControlProvider</code></a> for more information.</p><h3>Out-of-the-box access control providers</h3><ul><li>Casbin - <a href="https://github.com/pankod/refine/tree/master/examples/accessControl/casbin">Source Code</a> - <a href="https://codesandbox.io/s/access-control-casbin-react-l06vy">Demo</a></li><li>Cerbos - <a href="https://github.com/pankod/refine/tree/master/examples/accessControl/cerbos">Source Code</a> - <a href="https://codesandbox.io/s/access-control-cerbos-react-mbhei">Demo</a></li></ul><h2>Internationalization</h2><p>The <code>i18nProvider</code> is used to give localization features to your application. This will allow you to change the text in your application to different languages.</p><p>An i18n provider must have the following properties:</p><pre><code class="language-ts">const i18nProvider = {
+    translate: (key: string, params: object) =&gt; string,
+    changeLocale: (lang: string) =&gt; Promise,
+    getLocale: () =&gt; string,
+};
+</code></pre><p>Refine uses these methods via <a href="https://refine.dev/docs/core/hooks/translate/useTranslate/">translation hooks</a>.</p><p>Refer to <a href="https://refine.dev/docs/core/providers/i18n-provider">Refine i18nProvider</a> for more details and how to use the <a href="https://react.i18next.com">react-i18next</a> package.</p><h2>Real-time support</h2><p>The <code>liveProvider</code> is used to add real-time support to your application. You can use any real-time library or tool that you want.</p><p>A live provider must have the following properties:</p><pre><code class="language-tsx">const liveProvider = {
+    subscribe: ({ channel, params: { ids }, types, callback }) =&gt; any,
+    unsubscribe: (subscription) =&gt; void,
+    publish?: (event) =&gt; void,
+};
+</code></pre><p>Refine data hooks are subscribed to using the subscribe method given with the live provider. The subscribe method returns a subscription object that can be used to unsubscribe. The unsubscribe method is used to unsubscribe from the subscription. The publish method is used to publish an event to the channel on the client side.</p><p>If you send an event after the relevant operations on the server, Refine will invalidate the related queries. If the <code>liveMode</code> is <code>manual</code>, queries of related resources are not invalidated in real-time; instead <code>onLiveEvent</code> is run with the event as new events from the subscription arrive.</p><h3>Out-of-the-box access control providers</h3><ul><li>Ably - <a href="https://github.com/pankod/refine/blob/master/packages/ably/src/index.ts">Source Code</a> - <a href="https://codesandbox.io/s/refine-ably-example-9swpp">Demo</a></li><li>Supabase - <a href="https://github.com/pankod/refine/blob/master/packages/supabase/src/index.ts#L187">Source Code</a></li><li>Appwrite - <a href="https://github.com/pankod/refine/blob/master/packages/appwrite/src/index.ts#L252">Source Code</a></li></ul><h2>Other features of Refine</h2><h3><code>notificationProvider</code></h3><p>The <code>notificationProvider</code> is used to display notifications to the user when mutations are performed. You can use any notification library that you want.</p><h3><code>mutationMode</code></h3><p>The <code>mutationMode</code> is used to determine how to handle mutations. You can use <code>pessimistic</code> <code>optimistic</code> or <code>undoable</code> mode. When using the pessimistic mode, UI updates are delayed until the mutation is confirmed by the server. When using the optimistic mode, UI updates are immediately updated. When using the undoable mode, UI updates are immediately updated, but you can undo the mutation.</p><h3><code>syncWithLocation</code></h3><p>If <code>syncWithLocation</code> is turned on, the list of query parameters may be modified manually by editing directly in the URL.</p><pre><code>/posts?current=1&amp;pageSize=8&amp;sort[]=createdAt&amp;order[]=desc
+</code></pre><br/><p>Check out all of Refine&#x27;s <a href="https://refine.dev/docs/core/components/refine-config">features</a> for more information.</p><h2>Conclusion</h2><p>If you&#x27;re looking for a way to quickly and easily create an internal tool without sacrificing customization, Refine is worth checking out. It allows you to choose any library that you want for your requirements. Plus, if you need help or have feedback, the team at Refine is responsive and happy to help out. Give <a href="https://github.com/pankod/refine">Refine</a> a star on GitHub if you like it - your support will help us continue making this tool amazing!</p>]]></content:encoded>
+        </item>
+        <item>
             <title><![CDATA[Build low-code, customizable and authorization ready (accesscontrol) admin panel with NestJS.]]></title>
             <link>https://refine.dev/blog/how-to-access-control-with-nestjs</link>
             <guid>how-to-access-control-with-nestjs</guid>
