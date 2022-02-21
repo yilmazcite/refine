@@ -295,6 +295,17 @@ Then we match the refine <code>actions</code> with the accessControl&#x27;s acti
         </author>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Top React JS Frameworks Every Developer Should Know]]></title>
+        <id>best-react-frameworks</id>
+        <link href="https://refine.dev/blog/best-react-frameworks"/>
+        <updated>2022-02-21T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We will compare the features of refine and react-admin]]></summary>
+        <author>
+            <name>Aydın Akyol</name>
+            <uri>https://github.com/biskuvit</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Next.js E-commerce App with Strapi and Chakra UI]]></title>
         <id>handcrafted-nextjs-e-commerce-app-tutorial-strapi-chakra-ui</id>
         <link href="https://refine.dev/blog/handcrafted-nextjs-e-commerce-app-tutorial-strapi-chakra-ui"/>

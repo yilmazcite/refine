@@ -283,6 +283,13 @@ export class CompanyController implements CrudController&lt;CompanyEntity&gt; {
 Then we match the refine <code>actions</code> with the accessControl&#x27;s actions and check its authorization with the <code>granted</code> method. I also resolve the returned result.</p><h2>Conclusion</h2><p>As a result, we have done the authorization on both the ui (dashboard) side and the api side.</p>]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[Top React JS Frameworks Every Developer Should Know]]></title>
+            <link>https://refine.dev/blog/best-react-frameworks</link>
+            <guid>best-react-frameworks</guid>
+            <pubDate>Mon, 21 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[We will compare the features of refine and react-admin]]></description>
+        </item>
+        <item>
             <title><![CDATA[Next.js E-commerce App with Strapi and Chakra UI]]></title>
             <link>https://refine.dev/blog/handcrafted-nextjs-e-commerce-app-tutorial-strapi-chakra-ui</link>
             <guid>handcrafted-nextjs-e-commerce-app-tutorial-strapi-chakra-ui</guid>
