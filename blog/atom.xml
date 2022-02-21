@@ -295,6 +295,17 @@ Then we match the refine <code>actions</code> with the accessControl&#x27;s acti
         </author>
     </entry>
     <entry>
+        <title type="html"><![CDATA[Create Full Featured Admin Panel with React and Ant Design]]></title>
+        <id>refine-react-ant-design-admin-panel-framework</id>
+        <link href="https://refine.dev/blog/refine-react-ant-design-admin-panel-framework"/>
+        <updated>2022-02-21T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[We will see how easy it is to develop a functional Admin panel with the perfect harmony of Refine and Ant Design.]]></summary>
+        <author>
+            <name>Melih Ekinci</name>
+            <uri>https://github.com/mlhekinci</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[Top React JS Frameworks Every Developer Should Know]]></title>
         <id>best-react-frameworks</id>
         <link href="https://refine.dev/blog/best-react-frameworks"/>

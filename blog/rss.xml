@@ -283,6 +283,13 @@ export class CompanyController implements CrudController&lt;CompanyEntity&gt; {
 Then we match the refine <code>actions</code> with the accessControl&#x27;s actions and check its authorization with the <code>granted</code> method. I also resolve the returned result.</p><h2>Conclusion</h2><p>As a result, we have done the authorization on both the ui (dashboard) side and the api side.</p>]]></content:encoded>
         </item>
         <item>
+            <title><![CDATA[Create Full Featured Admin Panel with React and Ant Design]]></title>
+            <link>https://refine.dev/blog/refine-react-ant-design-admin-panel-framework</link>
+            <guid>refine-react-ant-design-admin-panel-framework</guid>
+            <pubDate>Mon, 21 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[We will see how easy it is to develop a functional Admin panel with the perfect harmony of Refine and Ant Design.]]></description>
+        </item>
+        <item>
             <title><![CDATA[Top React JS Frameworks Every Developer Should Know]]></title>
             <link>https://refine.dev/blog/best-react-frameworks</link>
             <guid>best-react-frameworks</guid>
