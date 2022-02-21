@@ -1,13 +1,122 @@
 <?xml version="1.0" encoding="utf-8"?>
-<rss version="2.0">
+<rss version="2.0" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/">
     <channel>
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Mon, 14 Feb 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 21 Feb 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[Build low-code, customizable and authorization ready (accesscontrol) admin panel with NestJS.]]></title>
+            <link>https://refine.dev/blog/how-to-access-control-with-nestjs</link>
+            <guid>how-to-access-control-with-nestjs</guid>
+            <pubDate>Mon, 21 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Build authorization ready admin panel with NestJS.]]></description>
+            <content:encoded><![CDATA[<p><strong>All the steps described are in this <a href="https://github.com/pankod/refine-hackathon/tree/main/job-posting-app">repo</a>.</strong></p><h2>Intro</h2><p>In the <a href="https://dev.to/pankod/build-fast-and-customizable-admin-panel-with-nestjs-291">previous blog post</a>, we used <a href="https://nestjs.com">nestjs</a> with an api and <a href="https://refine.dev">refine</a> in the admin panel. In this blog, let&#x27;s add <strong>authorization</strong> to both api and admin panel.</p><h2>Scenario</h2><p>Let&#x27;s have two roles in this system, they are <code>admin</code> and <code>editor</code>. In the API we prepared, we had two crud processes that we categorized as <code>companies</code> and <code>jobs</code>.</p><p>In this scenario; <code>editor</code> can only list companies, not any deletion or additions. Have the authority to list and create job postings. Let <code>admin</code> have authorization for all transactions.</p><h2>Authorization</h2><p>I used <a href="https://github.com/nestjsx/crud">nestjsx-crud</a> in the api we prepared. This library makes <code>CRUD</code> operations very easy. However, there is no support on the authorization side. That&#x27;s why I made use of the <a href="https://github.com/onury/accesscontrol">accesscontrol</a> library, which can be easily integrated with both <code>nestjs</code> and <code>refine</code>. </p><h2>Using AccessControl in API</h2><p>In the first step, let&#x27;s install <a href="https://github.com/nestjsx/nest-access-control">nestjs-access-control</a> in our project for <code>accesscontrol</code> integration to the api.</p><pre><code>npm install nest-access-control
+</code></pre><p>I&#x27;m specifying a role as the <code>AccessControl</code> supports. According to our scenario, this should be as follows:</p><pre><code class="language-ts">// app.roles.ts
+
+import { RolesBuilder } from &#x27;nest-access-control&#x27;;
+
+export enum AppRoles {
+  ADMIN = &#x27;ADMIN&#x27;,
+  EDITOR = &#x27;EDITOR&#x27;,
+}
+
+export const roles: RolesBuilder = new RolesBuilder();
+
+roles
+  // editor
+  .grant(AppRoles.EDITOR)
+  .create(&#x27;jobs&#x27;)
+  .update(&#x27;jobs&#x27;)
+  // admin
+  .grant(AppRoles.ADMIN)
+  .extend(AppRoles.EDITOR)
+  .create([&#x27;companies&#x27;])
+  .update([&#x27;companies&#x27;])
+  .delete([&#x27;companies&#x27;, &#x27;jobs&#x27;]);
+</code></pre><p>Now I import <code>AccessControlModule</code>.</p><pre><code class="language-ts">  // app.module.ts
+
+  import { roles } from &#x27;./app.roles&#x27;;
+
+    @Module({
+      imports: [
+        ...
+        AccessControlModule.forRoles(roles)
+      ],
+      controllers: [...],
+      providers: [...],
+    })
+    export class AppModule {}
+</code></pre><p>After determining the roles and privileges, we add the <code>ACGuard</code> class to the controller <code>UseGuards</code>.</p><pre><code class="language-ts">import { ACGuard } from &#x27;nest-access-control&#x27;;
+
+...
+@UseGuards(JwtAuthGuard, ACGuard)
+@Controller(&#x27;companies&#x27;)
+export class CompanyController implements CrudController&lt;CompanyEntity&gt; {}
+...
+</code></pre><p>Now we define resource and action for methods using <code>UseRoles</code> decorator. For example, we <strong>override</strong> for the <code>companies</code> resource and the <code>create</code> action as follows.</p><pre><code class="language-ts">import { ACGuard, UseRoles } from &#x27;nest-access-control&#x27;;
+
+...
+@UseGuards(JwtAuthGuard, ACGuard)
+@Controller(&#x27;companies&#x27;)
+export class CompanyController implements CrudController&lt;CompanyEntity&gt; {
+  constructor(public service: CompanyService) {}
+
+  get base(): CrudController&lt;CompanyEntity&gt; {
+    return this;
+  }
+
+  @Override()
+  @UseRoles({
+    resource: &#x27;companies&#x27;,
+    action: &#x27;create&#x27;,
+  })
+  createOne(
+    @ParsedRequest() req: CrudRequest,
+    @ParsedBody() dto: CompanyCreateDto,
+  ) {
+    return this.base.createOneBase(req, &lt;CompanyEntity&gt;dto);
+  }
+...
+</code></pre><p>Similarly, we add this decorator for other methods.</p><p>After these operations, we complete the authorization process on the API side. Now we will do the authorization to the admin panel that we created with <code>refine</code>.</p><h2>Using AccessControl in refine (dashboard)</h2><p>refine; It supports many authorization tools, very flexible. What we need to do; Defining an <code>accessControlProvider</code> inside the <code>&lt;Refine /&gt;</code> component.</p><p><code>accessControlProvider</code> is implemented only one asynchronous method named &quot;can&quot; to be used to control whether the requested access is granted. This method takes <code>resource</code> and <code>action</code> with parameters.</p><pre><code class="language-tsx">// App.tsx
+
+&lt;Refine
+  ...
+  accessControlProvider={{
+    can: async ({ resource, action }) =&gt; {
+      let can: boolean = false;
+      const stringifyUser = localStorage.getItem(&#x27;refine-user&#x27;);
+      if (stringifyUser) {
+        const { roles } = JSON.parse(stringifyUser);
+
+        roles.forEach((role: string) =&gt; {
+          switch (action) {
+            case &#x27;list&#x27;:
+            case &#x27;show&#x27;:
+              can = ac.can(role).read(resource).granted;
+              break;
+            case &#x27;create&#x27;:
+              can = ac.can(role).create(resource).granted;
+              break;
+            case &#x27;edit&#x27;:
+              can = ac.can(role).update(resource).granted;
+              break;
+            case &#x27;delete&#x27;:
+              can = ac.can(role).delete(resource).granted;
+              break;
+          }
+        });
+      }
+      return Promise.resolve({ can });
+    },
+  }}
+/&gt;****
+</code></pre><p>Now let me explain a little bit of this code I wrote. First we need the role of the logged in user. We saved it to local storage during login.
+Then we match the refine <code>actions</code> with the accessControl&#x27;s actions and check its authorization with the <code>granted</code> method. I also resolve the returned result.</p><h2>Conclusion</h2><p>As a result, we have done the authorization on both the ui (dashboard) side and the api side.</p>]]></content:encoded>
+        </item>
         <item>
             <title><![CDATA[Next.js E-commerce App with Strapi and Chakra UI]]></title>
             <link>https://refine.dev/blog/handcrafted-nextjs-e-commerce-app-tutorial-strapi-chakra-ui</link>
