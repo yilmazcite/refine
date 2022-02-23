@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Mon, 21 Feb 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 22 Feb 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[Develop your Own Customizable Invoice Generator with Refine and Strapi | Part I]]></title>
+            <link>https://refine.dev/blog/refine-react-admin-invoice-genarator</link>
+            <guid>refine-react-admin-invoice-genarator</guid>
+            <pubDate>Tue, 22 Feb 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Looking for an invoice generator? Try out Refine. With our custom interface, you can build your own invoice in minutes! Learn more here.]]></description>
+        </item>
         <item>
             <title><![CDATA[How to Become A Production Hero as Developer with Refine in 2022]]></title>
             <link>https://refine.dev/blog/how-to-become-a-production-hero-refine-2022</link>
