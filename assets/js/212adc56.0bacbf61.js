@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[2178],{99550:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/business-tool","name":"business-tool","count":1,"permalink":"/blog/tags/business-tool"}')}}]);
