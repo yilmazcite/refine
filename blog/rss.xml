@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Tue, 01 Mar 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Wed, 16 Mar 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[ReactJS Frameworks You Should Know Before Start Developing B2B/Internal Application]]></title>
+            <link>https://refine.dev/blog/best-internal-tool-react-frameworks</link>
+            <guid>best-internal-tool-react-frameworks</guid>
+            <pubDate>Wed, 16 Mar 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[We have listed Open source ReactJS frameworks that will help and speed you up while developing internal-tool applications.]]></description>
+        </item>
         <item>
             <title><![CDATA[Building an Customizable Invoice Generator App with Refine, Strapi & Ant Design | Part II]]></title>
             <link>https://refine.dev/blog/refine-invoice-generator</link>
