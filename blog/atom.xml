@@ -2,12 +2,23 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://refine.dev/blog</id>
     <title>refine Blog</title>
-    <updated>2022-03-16T00:00:00.000Z</updated>
+    <updated>2022-03-22T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://refine.dev/blog"/>
     <subtitle>refine Blog</subtitle>
     <icon>https://refine.dev/img/refine_favicon.png</icon>
     <rights>Copyright © 2022 refine.</rights>
+    <entry>
+        <title type="html"><![CDATA[We are going back to 1995! The perfect harmony of Modern stack and Win95]]></title>
+        <id>awesome-react-windows95-ui-with-refine</id>
+        <link href="https://refine.dev/blog/awesome-react-windows95-ui-with-refine"/>
+        <updated>2022-03-22T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[With the refine being headless, we may use any UI we choose for our Admin Panel. In this tutorial, we'll create a Nostalgic-style admin panel using refine and React95 UI.]]></summary>
+        <author>
+            <name>Melih Ekinci</name>
+            <uri>https://github.com/mlhekinci</uri>
+        </author>
+    </entry>
     <entry>
         <title type="html"><![CDATA[ReactJS Frameworks You Should Know Before Start Developing B2B/Internal Application]]></title>
         <id>best-internal-tool-react-frameworks</id>
