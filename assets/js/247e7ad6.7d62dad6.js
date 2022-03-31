@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[8963],{26009:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/windows-95","name":"Windows95","count":1,"permalink":"/blog/tags/windows-95"}')}}]);

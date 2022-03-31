@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[4551],{72622:function(a){a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/supabase","name":"Supabase","count":4,"permalink":"/blog/tags/supabase"}')}}]);

@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Tue, 22 Mar 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Tue, 29 Mar 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[How to Multipart File Upload Using FormData with React Hook Form]]></title>
+            <link>https://refine.dev/blog/how-to-multipart-file-upload-with-react-hook-form</link>
+            <guid>how-to-multipart-file-upload-with-react-hook-form</guid>
+            <pubDate>Tue, 29 Mar 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this guide, I'm going to show you how to multipart files upload with using React Hook Form]]></description>
+        </item>
         <item>
             <title><![CDATA[We are going back to 1995! The perfect harmony of Modern stack and Win95]]></title>
             <link>https://refine.dev/blog/awesome-react-windows95-ui-with-refine</link>

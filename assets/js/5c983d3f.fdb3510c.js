@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[3779],{29240:function(a){a.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/adminpanel","name":"adminpanel","count":1,"permalink":"/blog/tags/adminpanel"}')}}]);

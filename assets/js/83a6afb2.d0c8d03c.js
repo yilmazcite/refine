@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[42696],{59038:function(e){e.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/invoice-generator","name":"invoice-generator","count":2,"permalink":"/blog/tags/invoice-generator"}')}}]);
