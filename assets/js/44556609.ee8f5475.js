@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[95165],{44389:function(s){s.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/squoosh","name":"squoosh","count":1,"permalink":"/blog/tags/squoosh"}')}}]);

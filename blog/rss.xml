@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Tue, 29 Mar 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 02 May 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[10 High-Quality Free Resources That Will Make Every Web Developer's Life Easier]]></title>
+            <link>https://refine.dev/blog/10-high-quality-free-resources</link>
+            <guid>10-high-quality-free-resources</guid>
+            <pubDate>Mon, 02 May 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[We will examine the resources that will make our job easier when making a website.]]></description>
+        </item>
         <item>
             <title><![CDATA[How to Multipart File Upload Using FormData with React Hook Form]]></title>
             <link>https://refine.dev/blog/how-to-multipart-file-upload-with-react-hook-form</link>
