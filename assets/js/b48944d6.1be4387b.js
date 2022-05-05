@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkdocumentation=self.webpackChunkdocumentation||[]).push([[25287],{74858:function(t){t.exports=JSON.parse('{"allTagsPath":"/blog/tags","slug":"/blog/tags/react-bootstrap","name":"react-bootstrap","count":2,"permalink":"/blog/tags/react-bootstrap"}')}}]);
