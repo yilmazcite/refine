@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Mon, 02 May 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Thu, 05 May 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[Best Open-Source Headless CMS to Try for Your Next Application]]></title>
+            <link>https://refine.dev/blog/open-source-headless-cms</link>
+            <guid>open-source-headless-cms</guid>
+            <pubDate>Thu, 05 May 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[A headless CMS system, which can be developed quickly, contains many features you need, and helps you to produce products very quickly compared to traditional systems.]]></description>
+        </item>
         <item>
             <title><![CDATA[10 High-Quality Free Resources That Will Make Every Web Developer's Life Easier]]></title>
             <link>https://refine.dev/blog/10-high-quality-free-resources</link>
