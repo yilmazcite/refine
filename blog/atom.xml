@@ -20,6 +20,17 @@
         </author>
     </entry>
     <entry>
+        <title type="html"><![CDATA[How to Create Full Stack React/Next.JS Web App in Few Hour]]></title>
+        <id>create-full-stack-app-with-refine</id>
+        <link href="https://refine.dev/blog/create-full-stack-app-with-refine"/>
+        <updated>2022-04-29T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[In this article, we will learn how we can create a full-featured customizable Web / B2B application with **refine** in just a few hours.]]></summary>
+        <author>
+            <name>Melih Ekinci</name>
+            <uri>https://github.com/mlhekinci</uri>
+        </author>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[The Advantages and Disadvantages of Working on Open Source Projects]]></title>
         <id>open-source-advantages-disadvantages</id>
         <link href="https://refine.dev/blog/open-source-advantages-disadvantages"/>

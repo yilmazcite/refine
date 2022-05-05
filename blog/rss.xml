@@ -16,6 +16,13 @@
             <description><![CDATA[We will examine the resources that will make our job easier when making a website.]]></description>
         </item>
         <item>
+            <title><![CDATA[How to Create Full Stack React/Next.JS Web App in Few Hour]]></title>
+            <link>https://refine.dev/blog/create-full-stack-app-with-refine</link>
+            <guid>create-full-stack-app-with-refine</guid>
+            <pubDate>Fri, 29 Apr 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this article, we will learn how we can create a full-featured customizable Web / B2B application with **refine** in just a few hours.]]></description>
+        </item>
+        <item>
             <title><![CDATA[The Advantages and Disadvantages of Working on Open Source Projects]]></title>
             <link>https://refine.dev/blog/open-source-advantages-disadvantages</link>
             <guid>open-source-advantages-disadvantages</guid>
