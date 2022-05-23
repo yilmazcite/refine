@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Thu, 05 May 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Mon, 23 May 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[Build Access Control Mechanism using Permify]]></title>
+            <link>https://refine.dev/blog/build-access-control-permify</link>
+            <guid>build-access-control-permify</guid>
+            <pubDate>Mon, 23 May 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[In this article, I will explain how to build an Access Control n Refine using Permify; an authorization API that helps you to create any kind of authorization system easily with its panel.]]></description>
+        </item>
         <item>
             <title><![CDATA[Best Open-Source Headless CMS to Try for Your Next Application]]></title>
             <link>https://refine.dev/blog/open-source-headless-cms</link>
