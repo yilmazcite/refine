@@ -8,12 +8,14 @@ import {
     EditButton,
     RefineList,
     Table,
+    TagField,
     Tbody,
     Td,
     Th,
     Thead,
     Tr,
     Wrap,
+    DateField,
 } from "@pankod/refine-chakra-ui";
 import { IResourceComponentsProps } from "@pankod/refine-core";
 import {
@@ -46,11 +48,16 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 id: "status",
                 Header: "Status",
                 accessor: "status",
+                Cell: ({ value }: { value: string }) => {
+                    return <TagField value={value} />;
+                },
             },
             {
                 id: "createdAt",
                 Header: "CreatedAt",
-                accessor: "createdAt",
+                Cell: ({ value }: { value: string }) => {
+                    return <DateField value={value} />;
+                },
             },
             {
                 id: "actions",

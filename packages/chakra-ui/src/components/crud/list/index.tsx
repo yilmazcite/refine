@@ -11,13 +11,13 @@ import { Flex, Heading, Stack, StackProps, Text } from "@chakra-ui/react";
 
 import { CreateButton, CreateButtonProps } from "@components";
 
-export interface RefineListProps {
+export interface ListProps {
     canCreate?: boolean;
     createButtonProps?: CreateButtonProps;
     resource?: string;
     stackProps?: StackProps;
-    /*     cardHeaderProps?: CardHeaderProps;
-    cardContentProps?: CardContentProps; */
+    stackHeaderProps?: StackProps;
+    stackContentProps?: StackProps;
 }
 
 /**
@@ -25,14 +25,14 @@ export interface RefineListProps {
  * It does not contain any logic but adds extra functionalities like a refresh button.
  *
  */
-export const RefineList: React.FC<RefineListProps> = ({
+export const List: React.FC<ListProps> = ({
     canCreate,
     children,
     createButtonProps,
     resource: resourceFromProps,
     stackProps,
-    /*     cardHeaderProps,
-    cardContentProps, */
+    stackHeaderProps,
+    stackContentProps,
 }) => {
     const { useParams } = useRouterContext();
 
@@ -49,7 +49,7 @@ export const RefineList: React.FC<RefineListProps> = ({
 
     return (
         <Stack {...stackProps} bg="white" borderRadius="md">
-            <Stack direction="row" padding={4}>
+            <Stack direction="row" padding={4} {...stackHeaderProps}>
                 <Heading fontWeight="semibold">
                     {translate(
                         `${resource.name}.titles.list`,
@@ -71,22 +71,7 @@ export const RefineList: React.FC<RefineListProps> = ({
                     )}
                 </Flex>
             </Stack>
-            {/*     <CardHeader
-                title={
-                    <Typography variant="h5">
-                        {translate(
-                            `${resource.name}.titles.list`,
-                            userFriendlyResourceName(
-                                resource.label ?? resource.name,
-                                "plural",
-                            ),
-                        )}
-                    </Typography>
-                }
-                action={defaultExtra}
-                {...cardHeaderProps}
-            /> */}
-            <Stack /* {...cardContentProps} */>{children}</Stack>
+            <Stack {...stackContentProps}>{children}</Stack>
         </Stack>
     );
 };
