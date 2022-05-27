@@ -18,7 +18,12 @@ export const MantineProvider = ({
     ...props
 }: PropsWithChildren<MantineProviderProps>): JSX.Element => {
     return (
-        <MantineBaseProvider {...props}>
+        <MantineBaseProvider
+            withGlobalStyles
+            withNormalizeCSS
+            theme={{ colorScheme: "light" }}
+            {...props}
+        >
             <NotificationsProvider {...(notificationProps ?? {})}>
                 {children}
             </NotificationsProvider>
