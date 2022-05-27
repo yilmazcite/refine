@@ -8,10 +8,10 @@ import {
     useRouterContext,
 } from "@pankod/refine-core";
 
-import { Button, ButtonProps } from "@mui/material";
-import EditOutlinedIcon from "@mui/icons-material/EditOutlined";
+import { Button, ButtonProps } from "@mantine/core";
+import { Edit } from "tabler-icons-react";
 
-export type EditButtonProps = ButtonProps & {
+export type EditButtonProps = ButtonProps<"button"> & {
     resourceNameOrRouteName?: string;
     recordItemId?: BaseKey;
     hideText?: boolean;
@@ -79,12 +79,12 @@ export const EditButton: React.FC<EditButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                startIcon={!hideText && <EditOutlinedIcon />}
+                leftIcon={!hideText && <Edit />}
                 title={disabledTitle()}
                 {...rest}
             >
                 {hideText ? (
-                    <EditOutlinedIcon />
+                    <Edit />
                 ) : (
                     children ?? translate("buttons.edit", "Edit")
                 )}

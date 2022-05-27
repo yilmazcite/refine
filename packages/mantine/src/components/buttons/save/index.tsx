@@ -2,10 +2,10 @@ import React from "react";
 
 import { useTranslate } from "@pankod/refine-core";
 
-import SaveOutlinedIcon from "@mui/icons-material/SaveOutlined";
-import { LoadingButton, LoadingButtonProps } from "@mui/lab";
+import { DeviceFloppy } from "tabler-icons-react";
+import { Button, ButtonProps } from "@mantine/core";
 
-export type SaveButtonProps = LoadingButtonProps & {
+export type SaveButtonProps = ButtonProps<"button"> & {
     hideText?: boolean;
 };
 
@@ -22,12 +22,12 @@ export const SaveButton: React.FC<SaveButtonProps> = ({
     const translate = useTranslate();
 
     return (
-        <LoadingButton startIcon={!hideText && <SaveOutlinedIcon />} {...rest}>
+        <Button leftIcon={!hideText && <DeviceFloppy />} {...rest}>
             {hideText ? (
-                <SaveOutlinedIcon />
+                <DeviceFloppy />
             ) : (
                 children ?? translate("buttons.save", "Save")
             )}
-        </LoadingButton>
+        </Button>
     );
 };

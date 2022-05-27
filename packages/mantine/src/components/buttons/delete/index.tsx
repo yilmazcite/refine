@@ -11,17 +11,10 @@ import {
     DeleteOneResponse,
     useResource,
 } from "@pankod/refine-core";
-import {
-    Button,
-    ButtonProps,
-    Dialog,
-    DialogActions,
-    DialogTitle,
-} from "@mui/material";
-import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import { LoadingButton } from "@mui/lab";
+import { Button, ButtonProps, Dialog, Group, Text } from "@mantine/core";
+import { Trash } from "tabler-icons-react";
 
-export type DeleteButtonProps = ButtonProps & {
+export type DeleteButtonProps = ButtonProps<"button"> & {
     resourceNameOrRouteName?: string;
     recordItemId?: BaseKey;
     onSuccess?: (value: DeleteOneResponse) => void;
@@ -111,30 +104,30 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
 
     return (
         <div>
-            <LoadingButton
+            <Button
                 onClick={handleClickOpen}
                 disabled={data?.can === false}
                 loading={id === variables?.id && isLoading}
-                startIcon={!hideText && <DeleteOutlineIcon />}
+                leftIcon={!hideText && <Trash />}
                 {...rest}
             >
                 {hideText ? (
-                    <DeleteOutlineIcon />
+                    <Trash />
                 ) : (
                     children ?? translate("buttons.delete", "Delete")
                 )}
-            </LoadingButton>
+            </Button>
             <Dialog
-                open={open}
+                opened={open}
                 onClose={handleClose}
                 aria-labelledby="alert-dialog-title"
                 aria-describedby="alert-dialog-description"
             >
-                <DialogTitle id="alert-dialog-title">
+                <Text size="sm" style={{ marginBottom: 10 }} weight={500}>
                     {confirmTitle ??
                         translate("buttons.confirm", "Are you sure?")}
-                </DialogTitle>
-                <DialogActions>
+                </Text>
+                <Group align="flex-end">
                     <Button onClick={handleClose}>
                         {confirmCancelText ??
                             translate("buttons.cancel", "Cancel")}
@@ -142,7 +135,7 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
                     <Button onClick={handleCloseOnConfirm} autoFocus>
                         {confirmOkText ?? translate("buttons.delete", "Delete")}
                     </Button>
-                </DialogActions>
+                </Group>
             </Dialog>
         </div>
     );

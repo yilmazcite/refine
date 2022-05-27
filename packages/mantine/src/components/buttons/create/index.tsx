@@ -8,10 +8,10 @@ import {
     useRouterContext,
 } from "@pankod/refine-core";
 
-import { Button, ButtonProps } from "@mui/material";
-import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import { Button, ButtonProps } from "@mantine/core";
+import { SquarePlus } from "tabler-icons-react";
 
-export type CreateButtonProps = ButtonProps & {
+export type CreateButtonProps = ButtonProps<"button"> & {
     resourceNameOrRouteName?: string;
     hideText?: boolean;
     ignoreAccessControlProvider?: boolean;
@@ -74,12 +74,12 @@ export const CreateButton: React.FC<CreateButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                startIcon={!hideText && <AddBoxOutlinedIcon />}
+                leftIcon={!hideText && <SquarePlus />}
                 title={disabledTitle()}
                 {...rest}
             >
                 {hideText ? (
-                    <AddBoxOutlinedIcon />
+                    <SquarePlus />
                 ) : (
                     children ?? translate("buttons.create", "Create")
                 )}

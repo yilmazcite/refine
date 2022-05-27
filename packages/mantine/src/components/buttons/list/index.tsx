@@ -8,10 +8,10 @@ import {
     useRouterContext,
 } from "@pankod/refine-core";
 
-import { Button, ButtonProps } from "@mui/material";
-import ListOutlinedIcon from "@mui/icons-material/ListOutlined";
+import { Button, ButtonProps } from "@mantine/core";
+import { List } from "tabler-icons-react";
 
-export type ListButtonProps = ButtonProps & {
+export type ListButtonProps = ButtonProps<"button"> & {
     resourceNameOrRouteName?: string;
     hideText?: boolean;
     ignoreAccessControlProvider?: boolean;
@@ -75,12 +75,12 @@ export const ListButton: React.FC<ListButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                startIcon={!hideText && <ListOutlinedIcon />}
+                leftIcon={!hideText && <List />}
                 title={disabledTitle()}
                 {...rest}
             >
                 {hideText ? (
-                    <ListOutlinedIcon />
+                    <List />
                 ) : (
                     children ??
                     translate(
