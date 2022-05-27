@@ -11,18 +11,14 @@ import {
 
 import {
     Card,
-    CardHeader,
-    CardActions,
-    CardContent,
-    IconButton,
     CardProps,
-    CardHeaderProps,
-    CardContentProps,
-    CardActionsProps,
-    Typography,
-} from "@mui/material";
-import { ButtonProps } from "@mantine/core";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+    Text,
+    Group,
+    ActionIcon,
+    ButtonProps,
+    GroupProps,
+} from "@mantine/core";
+import { ArrowBack } from "tabler-icons-react";
 
 import { SaveButton } from "@components";
 
@@ -31,10 +27,11 @@ export interface CreateProps {
     saveButtonProps?: ButtonProps<"button">;
     resource?: string;
     isLoading?: boolean;
-    cardProps?: CardProps;
-    cardHeaderProps?: CardHeaderProps;
-    cardContentProps?: CardContentProps;
-    cardActionsProps?: CardActionsProps;
+    cardProps?: CardProps<"div">;
+    cardHeadreProps?: GroupProps;
+    cardActionsProps?: GroupProps;
+    cardContentProps?: GroupProps;
+    title?: string;
 }
 
 /**
@@ -49,9 +46,10 @@ export const Create: React.FC<CreateProps> = ({
     resource: resourceFromProps,
     isLoading = false,
     cardProps,
-    cardHeaderProps,
-    cardContentProps,
+    cardHeadreProps,
     cardActionsProps,
+    cardContentProps,
+    title,
 }) => {
     const { goBack } = useNavigation();
 
@@ -68,34 +66,31 @@ export const Create: React.FC<CreateProps> = ({
 
     return (
         <Card {...cardProps}>
-            <CardHeader
-                title={
-                    <Typography variant="h5">
-                        {translate(
-                            `${resource.name}.titles.create`,
-                            `Create ${userFriendlyResourceName(
-                                resource.label ?? resource.name,
-                                "singular",
-                            )}`,
-                        )}
-                    </Typography>
-                }
-                avatar={
-                    <IconButton onClick={routeFromAction ? goBack : undefined}>
-                        <ArrowBackIcon />
-                    </IconButton>
-                }
-                {...cardHeaderProps}
-            />
-            <CardContent {...cardContentProps}>{children}</CardContent>
-            <CardActions
-                sx={{ display: "flex", justifyContent: "flex-end" }}
+            <Group {...cardHeadreProps}>
+                <Text title={title}>
+                    <ActionIcon onClick={routeFromAction ? goBack : undefined}>
+                        <ArrowBack />
+                    </ActionIcon>
+                    {title
+                        ? title
+                        : translate(
+                              `${resource.name}.titles.create`,
+                              `Create ${userFriendlyResourceName(
+                                  resource.label ?? resource.name,
+                                  "singular",
+                              )}`,
+                          )}
+                </Text>
+            </Group>
+            <Group {...cardContentProps}>{children}</Group>
+            <Group
                 {...cardActionsProps}
+                sx={{ display: "flex", justifyContent: "flex-end" }}
             >
                 {actionButtons ?? (
                     <SaveButton loading={isLoading} {...saveButtonProps} />
                 )}
-            </CardActions>
+            </Group>
         </Card>
     );
 };
