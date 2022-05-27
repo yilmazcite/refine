@@ -18,6 +18,7 @@ const App: React.FC = () => {
             routerProvider={routerProvider}
             dataProvider={dataProvider("https://api.fake-rest.refine.dev")}
             notificationProvider={notificationProviderHandle()}
+            mutationMode="undoable"
             resources={[
                 {
                     name: "posts",
