@@ -8,11 +8,10 @@ import {
     useResource,
 } from "@pankod/refine-core";
 
-import { ButtonProps } from "@mui/material";
-import RefreshOutlinedIcon from "@mui/icons-material/RefreshOutlined";
-import { LoadingButton } from "@mui/lab";
+import { Button, ButtonProps } from "@mantine/core";
+import { Refresh } from "tabler-icons-react";
 
-export type RefreshButtonProps = ButtonProps & {
+export type RefreshButtonProps = ButtonProps<"button"> & {
     resourceNameOrRouteName?: string;
     recordItemId?: BaseKey;
     hideText?: boolean;
@@ -42,7 +41,7 @@ export const RefreshButton: React.FC<RefreshButtonProps> = ({
 
     const translate = useTranslate();
 
-    const { refetch, isFetching } = useOne({
+    const { refetch, isFetching, isLoading } = useOne({
         resource: resourceName,
         id: id ?? "",
         queryOptions: {
@@ -54,17 +53,19 @@ export const RefreshButton: React.FC<RefreshButtonProps> = ({
     });
 
     return (
-        <LoadingButton
-            startIcon={!hideText && <RefreshOutlinedIcon />}
+        <Button
+            leftIcon={!hideText && <Refresh />}
             loading={isFetching}
-            onClick={(e) => (onClick ? onClick(e) : refetch())}
+            onClick={(e: React.MouseEvent<HTMLButtonElement>) =>
+                onClick ? onClick(e) : refetch()
+            }
             {...rest}
         >
             {hideText ? (
-                <RefreshOutlinedIcon />
+                <Refresh />
             ) : (
                 children ?? translate("buttons.refresh", "Refresh")
             )}
-        </LoadingButton>
+        </Button>
     );
 };
