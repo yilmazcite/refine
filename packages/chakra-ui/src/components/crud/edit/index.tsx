@@ -11,7 +11,15 @@ import {
     ResourceRouterParams,
     BaseKey,
 } from "@pankod/refine-core";
-import { Button, Stack, StackProps, Text } from "@chakra-ui/react";
+import {
+    Button,
+    Flex,
+    Heading,
+    Stack,
+    StackProps,
+    Text,
+    Wrap,
+} from "@chakra-ui/react";
 
 import {
     DeleteButton,
@@ -84,18 +92,14 @@ export const Edit: React.FC<EditProps> = ({
     const id = recordItemId ?? idFromRoute;
 
     return (
-        <Stack {...stackProps}>
-            <Stack
-                direction="row"
-                spacing={4}
-                alignItems="start"
-                {...stackHeaderProps}
-            >
+        <Stack {...stackProps} bg="white" borderRadius="md" padding={4}>
+            <Stack direction="row" spacing={4} {...stackHeaderProps}>
                 <Button
                     onClick={routeFromAction ? goBack : undefined}
                     leftIcon={<ArrowBackIcon />}
+                    background="transparent"
                 />
-                <Text fontWeight="semibold">
+                <Heading fontWeight="semibold">
                     {translate(
                         `${resource.name}.titles.edit`,
                         `Edit ${userFriendlyResourceName(
@@ -103,8 +107,8 @@ export const Edit: React.FC<EditProps> = ({
                             "singular",
                         )}`,
                     )}
-                </Text>
-                <Stack display={"flex"} justifyContent="flex-end" spacing={4}>
+                </Heading>
+                <Wrap>
                     {!recordItemId && (
                         <ListButton
                             data-testid="edit-list-button"
@@ -115,7 +119,7 @@ export const Edit: React.FC<EditProps> = ({
                         resourceNameOrRouteName={resource.route}
                         recordItemId={id}
                     />
-                </Stack>
+                </Wrap>
             </Stack>
 
             <Stack {...stackContentProps}>{children}</Stack>

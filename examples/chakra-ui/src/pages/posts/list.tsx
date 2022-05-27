@@ -13,6 +13,7 @@ import {
     Th,
     Thead,
     Tr,
+    Wrap,
 } from "@pankod/refine-chakra-ui";
 import { IResourceComponentsProps } from "@pankod/refine-core";
 import {
@@ -57,13 +58,13 @@ export const PostList: React.FC<IResourceComponentsProps> = () => {
                 accessor: "id",
                 Cell: ({ value }: { value: string }) => {
                     return (
-                        <>
+                        <Wrap>
                             <EditButton size="sm" recordItemId={value} />
                             <DeleteButton
                                 size="sm"
                                 recordItemId={value}
                             ></DeleteButton>
-                        </>
+                        </Wrap>
                     );
                 },
             },

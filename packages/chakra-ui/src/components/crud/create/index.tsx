@@ -8,7 +8,7 @@ import {
     userFriendlyResourceName,
     ResourceRouterParams,
 } from "@pankod/refine-core";
-import { StackProps, Stack, Button, Text } from "@chakra-ui/react";
+import { StackProps, Stack, Button, Text, Heading } from "@chakra-ui/react";
 
 import { SaveButton, SaveButtonProps } from "@components";
 import { ArrowBackIcon } from "@chakra-ui/icons";
@@ -55,18 +55,16 @@ export const Create: React.FC<CreateProps> = ({
 
     return (
         <>
-            <Stack {...stackProps}>
-                <Stack
-                    direction="row"
-                    spacing={4}
-                    alignItems="start"
-                    {...stackHeaderProps}
-                >
+            <Stack {...stackProps} bg="white" borderRadius="md" padding={4}>
+                <Stack direction="row" spacing={4} {...stackHeaderProps}>
                     <Button
                         onClick={routeFromAction ? goBack : undefined}
+                        bg="transparent"
+                        size="lg"
+                        variant="ghost"
                         leftIcon={<ArrowBackIcon />}
                     />
-                    <Text fontWeight="semibold">
+                    <Heading fontWeight="semibold">
                         {translate(
                             `${resource.name}.titles.create`,
                             `Create ${userFriendlyResourceName(
@@ -74,9 +72,11 @@ export const Create: React.FC<CreateProps> = ({
                                 "singular",
                             )}`,
                         )}
-                    </Text>
+                    </Heading>
                 </Stack>
-                <Stack {...stackContentProps}>{children}</Stack>
+                <Stack {...stackContentProps} padding={6}>
+                    {children}
+                </Stack>
                 <Stack
                     display={"flex"}
                     justifyContent="flex-end"

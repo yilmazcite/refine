@@ -1,28 +1,23 @@
-import React, { useState } from "react";
+import React from "react";
 import { IResourceComponentsProps, useSelect } from "@pankod/refine-core";
 
 import {
-    Button,
     Create,
     FormControl,
     FormErrorMessage,
     FormLabel,
     Input,
-    SaveButton,
     Select,
     Textarea,
 } from "@pankod/refine-chakra-ui";
 import { useForm } from "@pankod/refine-react-hook-form";
 
-import { IPost, ICategory } from "../../interfaces";
-
 export const PostCreate: React.FC<IResourceComponentsProps> = () => {
     const {
-        refineCore: { onFinish, formLoading },
+        refineCore: { onFinish },
         register,
         handleSubmit,
         formState: { errors },
-        setValue,
         saveButtonProps,
     } = useForm();
 

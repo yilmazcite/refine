@@ -1,102 +1,99 @@
-import React, { useState } from "react";
-import { IResourceComponentsProps } from "@pankod/refine-core";
+import React, { useEffect } from "react";
+import { IResourceComponentsProps, useSelect } from "@pankod/refine-core";
 
-import { Edit, Form, Input, Select } from "@pankod/refine-antd";
-
-import { useForm, useSelect } from "@pankod/refine-antd";
-
-import ReactMarkdown from "react-markdown";
-import ReactMde from "react-mde";
-
-import "react-mde/lib/styles/css/react-mde-all.css";
-
-import { IPost, ICategory } from "../../interfaces";
+import {
+    Edit,
+    FormControl,
+    FormErrorMessage,
+    FormLabel,
+    Input,
+    Select,
+    Textarea,
+} from "@pankod/refine-chakra-ui";
+import { useForm } from "@pankod/refine-react-hook-form";
 
 export const PostEdit: React.FC<IResourceComponentsProps> = () => {
-    const { formProps, saveButtonProps, queryResult } = useForm<IPost>({
-        warnWhenUnsavedChanges: true,
-    });
+    const {
+        refineCore: { onFinish, queryResult },
+        register,
+        handleSubmit,
+        resetField,
+        formState: { errors },
+        saveButtonProps,
+    } = useForm();
 
-    const postData = queryResult?.data?.data;
-    const { selectProps: categorySelectProps } = useSelect<ICategory>({
+    const { options } = useSelect({
         resource: "categories",
-        defaultValue: postData?.category.id,
+        defaultValue: queryResult?.data?.data.category.id,
     });
 
-    const [selectedTab, setSelectedTab] =
-        useState<"write" | "preview">("write");
+    useEffect(() => {
+        resetField("category.id");
+    }, [options]);
 
     return (
         <Edit saveButtonProps={saveButtonProps}>
-            <Form {...formProps} layout="vertical">
-                <Form.Item
-                    label="Title"
-                    name="title"
-                    rules={[
-                        {
-                            required: true,
-                        },
-                    ]}
-                >
-                    <Input />
-                </Form.Item>
-                <Form.Item
-                    label="Category"
-                    name={["category", "id"]}
-                    rules={[
-                        {
-                            required: true,
-                        },
-                    ]}
-                >
-                    <Select {...categorySelectProps} />
-                </Form.Item>
-                <Form.Item
-                    label="Status"
-                    name="status"
-                    rules={[
-                        {
-                            required: true,
-                        },
-                    ]}
-                >
+            <form onSubmit={handleSubmit(onFinish)}>
+                <FormControl isInvalid={errors.title} isRequired>
+                    <FormLabel htmlFor="title">Title</FormLabel>
+                    <Input
+                        id="title"
+                        placeholder="Title"
+                        {...register("title", {
+                            required: "This field is required",
+                            minLength: {
+                                value: 4,
+                                message: "Minimum length should be 4",
+                            },
+                        })}
+                    />
+                    <FormErrorMessage>
+                        {errors.title && errors.title.message}
+                    </FormErrorMessage>
+                </FormControl>
+                <FormControl isInvalid={errors.status} isRequired>
+                    <FormLabel htmlFor="status">Status</FormLabel>
+                    <Select {...register("status")}>
+                        <option value="published">published</option>
+                        <option value="draft">draft</option>
+                        <option value="rejected">rejected</option>
+                    </Select>
+                </FormControl>
+
+                <FormControl isInvalid={errors.category} isRequired>
+                    <FormLabel htmlFor="category.id">Category</FormLabel>
                     <Select
-                        options={[
-                            {
-                                label: "Published",
-                                value: "published",
-                            },
-                            {
-                                label: "Draft",
-                                value: "draft",
-                            },
-                            {
-                                label: "Rejected",
-                                value: "rejected",
-                            },
-                        ]}
+                        {...register("category.id", {
+                            required: "This field is required",
+                        })}
+                    >
+                        <option value={""} disabled>
+                            Please select
+                        </option>
+                        {options?.map((category) => (
+                            <option key={category.value} value={category.value}>
+                                {category.label}
+                            </option>
+                        ))}
+                    </Select>
+                    <FormErrorMessage>
+                        {errors.category && errors.category.id.message}
+                    </FormErrorMessage>
+                </FormControl>
+
+                <FormControl isInvalid={errors.content} isRequired>
+                    <FormLabel htmlFor="content">Content</FormLabel>
+                    <Textarea
+                        {...register("content", {
+                            required: "This field is required",
+                        })}
                     />
-                </Form.Item>
-                <Form.Item
-                    label="Content"
-                    name="content"
-                    rules={[
-                        {
-                            required: true,
-                        },
-                    ]}
-                >
-                    <ReactMde
-                        selectedTab={selectedTab}
-                        onTabChange={setSelectedTab}
-                        generateMarkdownPreview={(markdown) =>
-                            Promise.resolve(
-                                <ReactMarkdown>{markdown}</ReactMarkdown>,
-                            )
-                        }
-                    />
-                </Form.Item>
-            </Form>
+                    <FormErrorMessage>
+                        {errors.content && errors.content.message}
+                    </FormErrorMessage>
+                </FormControl>
+                <br />
+            </form>
         </Edit>
     );
 };

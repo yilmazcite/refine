@@ -2,7 +2,7 @@ import { Refine } from "@pankod/refine-core";
 import dataProvider from "@pankod/refine-simple-rest";
 import routerProvider from "@pankod/refine-react-router-v6";
 import { Layout, RefineList, Edit } from "@pankod/refine-chakra-ui";
-import { PostList, PostCreate } from "./pages/posts";
+import { PostList, PostCreate, PostEdit } from "./pages/posts";
 
 const Hede = () => <RefineList>Page</RefineList>;
 const EditView = () => <Edit>Page</Edit>;
@@ -17,7 +17,7 @@ const App: React.FC = () => {
                     name: "posts",
                     list: PostList,
                     create: PostCreate,
-                    edit: EditView,
+                    edit: PostEdit,
                 },
                 {
                     name: "categories",

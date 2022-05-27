@@ -7,7 +7,7 @@ import {
     userFriendlyResourceName,
     ResourceRouterParams,
 } from "@pankod/refine-core";
-import { Stack, StackProps, Text } from "@chakra-ui/react";
+import { Flex, Heading, Stack, StackProps, Text } from "@chakra-ui/react";
 
 import { CreateButton, CreateButtonProps } from "@components";
 
@@ -48,9 +48,9 @@ export const RefineList: React.FC<RefineListProps> = ({
         canCreate ?? (resource.canCreate || createButtonProps);
 
     return (
-        <Stack {...stackProps}>
-            <Stack direction="row" alignItems="start">
-                <Text fontWeight="semibold">
+        <Stack {...stackProps} bg="white" borderRadius="md">
+            <Stack direction="row" padding={4}>
+                <Heading fontWeight="semibold">
                     {translate(
                         `${resource.name}.titles.list`,
                         userFriendlyResourceName(
@@ -58,8 +58,8 @@ export const RefineList: React.FC<RefineListProps> = ({
                             "plural",
                         ),
                     )}
-                </Text>
-                <Stack direction="row" alignItems="end">
+                </Heading>
+                <Flex alignItems={"flex-end"}>
                     {isCreateButtonVisible && (
                         <CreateButton
                             resourceNameOrRouteName={resource.route}
@@ -69,7 +69,7 @@ export const RefineList: React.FC<RefineListProps> = ({
                             Create
                         </CreateButton>
                     )}
-                </Stack>
+                </Flex>
             </Stack>
             {/*     <CardHeader
                 title={
