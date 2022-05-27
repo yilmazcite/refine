@@ -21,5 +21,4 @@ export * from "@mantine/hooks";
 
 export * from "./components";
 export * from "./hooks";
-export * from "./theme";
 export * from "./providers";
