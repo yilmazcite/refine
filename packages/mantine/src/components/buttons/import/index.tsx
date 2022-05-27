@@ -1,11 +1,11 @@
 import React from "react";
 
-import { LoadingButton } from "@mui/lab";
-import ImportExportOutlinedIcon from "@mui/icons-material/ImportExportOutlined";
+import { Button, ButtonProps } from "@mantine/core";
+import { FileImport } from "tabler-icons-react";
 
 import { useTranslate, UseImportInputPropsType } from "@pankod/refine-core";
 
-export type ImportButtonProps = {
+export type ImportButtonProps = ButtonProps<"button"> & {
     inputProps: UseImportInputPropsType;
     hideText?: boolean;
     loading?: boolean;
@@ -27,17 +27,17 @@ export const ImportButton: React.FC<ImportButtonProps> = ({
     return (
         <label htmlFor="contained-button-file">
             <input {...inputProps} id="contained-button-file" multiple hidden />
-            <LoadingButton
+            <Button
                 component="span"
-                startIcon={!hideText && <ImportExportOutlinedIcon />}
+                leftIcon={!hideText && <FileImport />}
                 loading={loading}
             >
                 {hideText ? (
-                    <ImportExportOutlinedIcon />
+                    <FileImport />
                 ) : (
                     children ?? translate("buttons.import", "Import")
                 )}
-            </LoadingButton>
+            </Button>
         </label>
     );
 };
