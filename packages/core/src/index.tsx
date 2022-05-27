@@ -6,6 +6,7 @@ export {
     Pagination,
     IDataContextProvider as DataProvider,
     ILiveContext as LiveProvider,
+    IResourceContext as ResourceProvider,
     LiveEvent,
     ITranslationContext as TranslationProvider,
     IAccessControlContext as AccessControlProvider,
