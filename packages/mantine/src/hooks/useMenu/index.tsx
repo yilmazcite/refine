@@ -8,6 +8,7 @@ import {
     userFriendlyResourceName,
     createTreeView,
     ITreeMenu,
+    IResourceItem,
 } from "@pankod/refine-core";
 
 type useMenuReturnType = {
@@ -27,13 +28,13 @@ export const useMenu: () => useMenuReturnType = () => {
     const { hasDashboard } = useRefineContext();
 
     let selectedResource = resources.find(
-        (el) => location?.pathname === `/${el.route}`,
+        (el: IResourceItem) => location?.pathname === `/${el.route}`,
     );
 
     // for no ssr
     if (!selectedResource) {
         selectedResource = resources.find(
-            (el) => params?.resource === (el.route as string),
+            (el: IResourceItem) => params?.resource === (el.route as string),
         );
     }
 
@@ -58,7 +59,7 @@ export const useMenu: () => useMenuReturnType = () => {
                       },
                   ]
                 : []),
-            ...resources.map((resource) => {
+            ...resources.map((resource: IResourceItem) => {
                 const route = `/${resource.route}`;
 
                 return {
