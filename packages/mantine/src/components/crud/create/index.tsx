@@ -13,7 +13,6 @@ import {
     Card,
     CardHeader,
     CardActions,
-    ButtonProps,
     CardContent,
     IconButton,
     CardProps,
@@ -22,13 +21,14 @@ import {
     CardActionsProps,
     Typography,
 } from "@mui/material";
+import { ButtonProps } from "@mantine/core";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import { SaveButton } from "@components";
 
 export interface CreateProps {
     actionButtons?: React.ReactNode;
-    saveButtonProps?: ButtonProps;
+    saveButtonProps?: ButtonProps<"button">;
     resource?: string;
     isLoading?: boolean;
     cardProps?: CardProps;

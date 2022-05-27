@@ -5,36 +5,35 @@ import {
     LoginPage,
     ErrorComponent,
     ReadyPage,
-    ThemeProvider,
-    LightTheme,
-    DarkTheme,
+    MantineProvider,
     useMediaQuery,
-} from "@pankod/refine-mui";
+} from "@pankod/refine-mantine";
 import dataProvider from "@pankod/refine-simple-rest";
 import routerProvider from "@pankod/refine-react-router-v6";
 
 import { authProvider } from "authProvider";
-import { BasicDataGrid } from "pages/dataGrid";
-import { DataGridWithForm } from "pages/dataGridWithForm";
-import { PostCreate, PostEdit, PostList } from "pages/reactHookForm";
-import {
-    UseStepsList,
-    UseStepsFormCreate,
-    UseStepsFormEdit,
-} from "pages/useStepsForm";
-import { UseModalFormList } from "pages/useModalForm";
+// import { BasicDataGrid } from "pages/dataGrid";
+// import { DataGridWithForm } from "pages/dataGridWithForm";
+// import { PostCreate, PostEdit, PostList } from "pages/reactHookForm";
+// import {
+//     UseStepsList,
+//     UseStepsFormCreate,
+//     UseStepsFormEdit,
+// } from "pages/useStepsForm";
+
+import { DemoList } from "pages/demo";
 
 const API_URL = "https://api.fake-rest.refine.dev";
 const App: React.FC = () => {
     const prefersDarkMode = useMediaQuery("(prefers-color-scheme: dark)");
 
     const theme = useMemo(
-        () => (prefersDarkMode ? DarkTheme : LightTheme),
+        () => (prefersDarkMode ? "dark" : "light"),
         [prefersDarkMode],
     );
 
     return (
-        <ThemeProvider theme={theme}>
+        <MantineProvider theme={{ colorScheme: theme }}>
             <Refine
                 authProvider={authProvider}
                 routerProvider={routerProvider}
@@ -46,51 +45,51 @@ const App: React.FC = () => {
                 resources={[
                     {
                         name: "posts",
-                        list: UseModalFormList,
+                        list: DemoList,
                         options: {
-                            route: "use-modal-form",
-                            label: "useModalForm",
+                            route: "demo-list",
+                            label: "Demo List",
                         },
                     },
-                    {
-                        name: "posts",
-                        list: UseStepsList,
-                        create: UseStepsFormCreate,
-                        edit: UseStepsFormEdit,
-                        options: {
-                            route: "use-steps-form",
-                            label: "useStepsForm",
-                        },
-                    },
-                    {
-                        name: "posts",
-                        list: PostList,
-                        create: PostCreate,
-                        edit: PostEdit,
-                        options: {
-                            route: "refine-react-hook-form",
-                            label: "React Hook Form",
-                        },
-                    },
-                    {
-                        name: "posts",
-                        list: BasicDataGrid,
-                        options: {
-                            route: "basic-data-grid",
-                            label: "useDataGrid",
-                        },
-                    },
-                    {
-                        name: "posts",
-                        list: DataGridWithForm,
-                        options: {
-                            route: "data-grid-with-form",
-                            label: "DataGrid with Form",
-                        },
-                    },
+                    // {
+                    //     name: "posts",
+                    //     list: UseStepsList,
+                    //     create: UseStepsFormCreate,
+                    //     edit: UseStepsFormEdit,
+                    //     options: {
+                    //         route: "use-steps-form",
+                    //         label: "useStepsForm",
+                    //     },
+                    // },
+                    // {
+                    //     name: "posts",
+                    //     list: PostList,
+                    //     create: PostCreate,
+                    //     edit: PostEdit,
+                    //     options: {
+                    //         route: "refine-react-hook-form",
+                    //         label: "React Hook Form",
+                    //     },
+                    // },
+                    // {
+                    //     name: "posts",
+                    //     list: BasicDataGrid,
+                    //     options: {
+                    //         route: "basic-data-grid",
+                    //         label: "useDataGrid",
+                    //     },
+                    // },
+                    // {
+                    //     name: "posts",
+                    //     list: DataGridWithForm,
+                    //     options: {
+                    //         route: "data-grid-with-form",
+                    //         label: "DataGrid with Form",
+                    //     },
+                    // },
                 ]}
             />
-        </ThemeProvider>
+        </MantineProvider>
     );
 };
 

@@ -2,6 +2,7 @@ import {
     List as MantineList,
     Title as MantineTitle,
     MantineProvider as MantineBaseProvider,
+    MantineProviderProps as MantineBaseProviderProps,
 } from "@mantine/core";
 import { List, Title } from "./components";
 import { MantineProvider } from "./providers";
@@ -15,6 +16,7 @@ export {
     Title,
     MantineProvider,
     MantineBaseProvider,
+    MantineBaseProviderProps,
 };
 
 export * from "@mantine/hooks";

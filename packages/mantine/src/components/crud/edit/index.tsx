@@ -14,7 +14,6 @@ import {
 
 import {
     Card,
-    ButtonProps,
     CardHeader,
     IconButton,
     CardContent,
@@ -25,6 +24,7 @@ import {
     CardActionsProps,
     Typography,
 } from "@mui/material";
+import { ButtonProps } from "@mantine/core";
 import ArrowBackIcon from "@mui/icons-material/ArrowBack";
 
 import {
@@ -37,7 +37,7 @@ import { DeleteButtonProps } from "@components";
 
 export interface EditProps {
     actionButtons?: React.ReactNode;
-    saveButtonProps?: ButtonProps;
+    saveButtonProps?: ButtonProps<"button">;
     mutationMode?: MutationMode;
     recordItemId?: BaseKey;
     canDelete?: boolean;
