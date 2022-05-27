@@ -7,16 +7,8 @@ import {
     userFriendlyResourceName,
     ResourceRouterParams,
 } from "@pankod/refine-core";
-
-import {
-    Card,
-    CardHeader,
-    CardContent,
-    CardProps,
-    CardHeaderProps,
-    CardContentProps,
-    Typography,
-} from "@mui/material";
+import { Card, CardProps, Text, Group, GroupProps } from "@mantine/core";
+import { ArrowBack } from "tabler-icons-react";
 
 import { CreateButton, CreateButtonProps } from "@components";
 
@@ -24,9 +16,10 @@ export interface ListProps {
     canCreate?: boolean;
     createButtonProps?: CreateButtonProps;
     resource?: string;
-    cardProps?: CardProps;
-    cardHeaderProps?: CardHeaderProps;
-    cardContentProps?: CardContentProps;
+    cardProps?: CardProps<"div">;
+    cardHeaderProps?: GroupProps;
+    cardContentProps?: GroupProps;
+    title?: string;
 }
 
 /**
@@ -42,6 +35,7 @@ export const List: React.FC<ListProps> = ({
     cardProps,
     cardHeaderProps,
     cardContentProps,
+    title,
 }) => {
     const { useParams } = useRouterContext();
 
@@ -56,32 +50,29 @@ export const List: React.FC<ListProps> = ({
     const isCreateButtonVisible =
         canCreate ?? (resource.canCreate || createButtonProps);
 
-    const defaultExtra = isCreateButtonVisible && (
-        <CreateButton
-            resourceNameOrRouteName={resource.route}
-            data-testid="list-create-button"
-            {...createButtonProps}
-        />
-    );
-
     return (
         <Card {...cardProps}>
-            <CardHeader
-                title={
-                    <Typography variant="h5">
-                        {translate(
-                            `${resource.name}.titles.list`,
-                            userFriendlyResourceName(
-                                resource.label ?? resource.name,
-                                "plural",
-                            ),
-                        )}
-                    </Typography>
-                }
-                action={defaultExtra}
-                {...cardHeaderProps}
-            />
-            <CardContent {...cardContentProps}>{children}</CardContent>
+            <Group {...cardHeaderProps}>
+                <Text>
+                    {title
+                        ? title
+                        : translate(
+                              `${resource.name}.titles.list`,
+                              userFriendlyResourceName(
+                                  resource.label ?? resource.name,
+                                  "plural",
+                              ),
+                          )}
+                </Text>
+                {isCreateButtonVisible && (
+                    <CreateButton
+                        resourceNameOrRouteName={resource.route}
+                        data-testid="list-create-button"
+                        {...createButtonProps}
+                    />
+                )}
+            </Group>
+            <Group {...cardContentProps}>{children}</Group>
         </Card>
     );
 };
