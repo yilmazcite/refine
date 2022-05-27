@@ -1,9 +1,9 @@
 import React from "react";
-import * as Snack from "notistack";
+import * as MantineNotifications from "@mantine/notifications";
 
 import { OpenNotificationParams } from "@pankod/refine-core";
 
-import { CircularDeterminate } from "@components/circularDeterminate";
+import { RingCountdown } from "@components/ring-countdown";
 
 import { notificationProviderHandle } from ".";
 
@@ -28,19 +28,22 @@ describe("Notistack notificationProvider", () => {
         jest.clearAllMocks();
     });
 
-    const enqueueSnackbarMock = jest.fn();
+    const showMock = jest.fn();
 
-    const closeSnackbarMock = jest.fn();
+    const hideMock = jest.fn();
 
-    const useSnackbarEnqueueSnackbar = jest.spyOn(Snack, "useSnackbar");
-
-    useSnackbarEnqueueSnackbar.mockImplementation(
-        () =>
-            ({
-                enqueueSnackbar: enqueueSnackbarMock,
-                closeSnackbar: closeSnackbarMock,
-            } as any),
+    const showNotification = jest.spyOn(
+        MantineNotifications,
+        "showNotification",
     );
+
+    const hideNotification = jest.spyOn(
+        MantineNotifications,
+        "hideNotification",
+    );
+
+    showNotification.mockImplementation(showMock);
+    hideNotification.mockImplementation(hideMock);
 
     const notificationProvider = notificationProviderHandle();
 
@@ -49,32 +52,27 @@ describe("Notistack notificationProvider", () => {
     it("should render notification snack with success type ", () => {
         notificationProvider.open(mockNotification);
 
-        expect(enqueueSnackbarMock).toHaveBeenCalled();
-        expect(enqueueSnackbarMock).toHaveBeenCalledWith(
-            mockNotification.message,
-            {
-                variant: "success",
-                anchorOrigin: {
-                    vertical: "top",
-                    horizontal: "right",
-                },
-                disableWindowBlurListener: true,
-            },
+        expect(showMock).toHaveBeenCalled();
+        expect(showMock).toHaveBeenCalledWith(
+            expect.objectContaining({
+                message: mockNotification.message,
+                autoClose: 5000,
+                color: "green",
+            }),
         );
     });
 
     it("should render error notification if type set as error", async () => {
         notificationProvider.open({ ...mockNotification, type: "error" });
 
-        expect(enqueueSnackbarMock).toHaveBeenCalledTimes(1);
-        expect(enqueueSnackbarMock).toBeCalledWith(mockNotification.message, {
-            variant: "error",
-            anchorOrigin: {
-                vertical: "top",
-                horizontal: "right",
-            },
-            disableWindowBlurListener: true,
-        });
+        expect(showMock).toHaveBeenCalledTimes(1);
+        expect(showMock).toBeCalledWith(
+            expect.objectContaining({
+                color: "red",
+                message: mockNotification.message,
+                autoClose: 5000,
+            }),
+        );
     });
 
     // This test cover the case when the type is "progress"
@@ -82,33 +80,21 @@ describe("Notistack notificationProvider", () => {
     it("should render notification with undoable when type is progress", async () => {
         notificationProvider.open(mockNotificationUndoable);
 
-        expect(enqueueSnackbarMock).toHaveBeenCalledTimes(1);
-        expect(enqueueSnackbarMock).toBeCalledWith(
-            <>
-                <CircularDeterminate
-                    undoableTimeout={5}
-                    message={"Undo Test Notification Message"}
-                />
-            </>,
-            {
-                action: expect.any(Function),
-                anchorOrigin: {
-                    vertical: "top",
-                    horizontal: "right",
-                },
-                preventDuplicate: true,
-                key: "test-notification-undoable",
-                autoHideDuration: 5000,
-                disableWindowBlurListener: true,
-            },
+        expect(showMock).toHaveBeenCalledTimes(1);
+        expect(showMock).toBeCalledWith(
+            expect.objectContaining({
+                id: "test-notification-undoable",
+                autoClose: 5000,
+                icon: <RingCountdown undoableTimeout={5} />,
+            }),
         );
     });
 
-    // This test cover the case when the closeSnackbar is called
+    // This test cover the case when the `close` is called
 
     it("should close notification", async () => {
         notificationProvider.close("");
 
-        expect(closeSnackbarMock).toBeCalledTimes(1);
+        expect(hideMock).toBeCalledTimes(1);
     });
 });
