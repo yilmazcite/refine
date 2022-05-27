@@ -1,14 +1,14 @@
 import React from "react";
 import { TestWrapper, render } from "@test";
 
-import { CircularDeterminate } from ".";
+import { RingCountdown } from ".";
 
 jest.useFakeTimers();
 
-describe("CircularDeterminate", () => {
+describe("RingCountdown", () => {
     it("should render CircularDeterminate", () => {
         const { getByText } = render(
-            <CircularDeterminate undoableTimeout={5} message="test" />,
+            <RingCountdown undoableTimeout={5} message="test" />,
 
             {
                 wrapper: TestWrapper({}),
@@ -24,7 +24,7 @@ describe("CircularDeterminate", () => {
 
     it("should render CircularDeterminate with undoableTimeout is 0", () => {
         const { getByText } = render(
-            <CircularDeterminate undoableTimeout={0} message="test" />,
+            <RingCountdown undoableTimeout={0} message="test" />,
 
             {
                 wrapper: TestWrapper({}),

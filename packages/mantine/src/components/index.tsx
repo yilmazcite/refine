@@ -8,5 +8,5 @@ export { LoginPage, ReadyPage, ErrorComponent } from "./pages";
 
 export * from "./crud";
 export * from "./buttons";
-export * from "./circularDeterminate";
+export * from "./ring-countdown";
 export * from "./fields";
