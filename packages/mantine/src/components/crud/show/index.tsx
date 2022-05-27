@@ -11,18 +11,13 @@ import {
 
 import {
     Card,
-    CardActions,
-    CardContent,
-    CardHeader,
-    IconButton,
-    Box,
     CardProps,
-    CardHeaderProps,
-    CardContentProps,
-    CardActionsProps,
-    Typography,
-} from "@mui/material";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+    Text,
+    Group,
+    ActionIcon,
+    GroupProps,
+} from "@mantine/core";
+import { ArrowBack } from "tabler-icons-react";
 
 import {
     DeleteButton,
@@ -38,10 +33,12 @@ export interface ShowProps {
     isLoading?: boolean;
     resource?: string;
     recordItemId?: BaseKey;
-    cardProps?: CardProps;
-    cardHeaderProps?: CardHeaderProps;
-    cardContentProps?: CardContentProps;
-    cardActionsProps?: CardActionsProps;
+    cardProps?: CardProps<"div">;
+    cardHeaderProps?: GroupProps;
+    cardContentProps?: GroupProps;
+    cardActionsProps?: GroupProps;
+    groupProps?: GroupProps;
+    title?: string;
 }
 
 /**
@@ -61,6 +58,7 @@ export const Show: React.FC<ShowProps> = ({
     cardHeaderProps,
     cardContentProps,
     cardActionsProps,
+    title,
 }) => {
     const translate = useTranslate();
 
@@ -86,61 +84,59 @@ export const Show: React.FC<ShowProps> = ({
 
     return (
         <Card {...cardProps}>
-            <CardHeader
-                title={
-                    <Typography variant="h5">
-                        {translate(
-                            `${resource.name}.titles.show`,
-                            `Show ${userFriendlyResourceName(
-                                resource.label ?? resource.name,
-                                "singular",
-                            )}`,
-                        )}
-                    </Typography>
-                }
-                avatar={
-                    <IconButton onClick={routeFromAction ? goBack : undefined}>
-                        <ArrowBackIcon />
-                    </IconButton>
-                }
-                action={
-                    <Box sx={{ display: "flex" }}>
-                        {!recordItemId && (
-                            <ListButton
-                                data-testid="show-list-button"
-                                resourceNameOrRouteName={resource.route}
-                            />
-                        )}
-                        {isEditButtonVisible && (
-                            <EditButton
-                                disabled={isLoading}
-                                data-testid="show-edit-button"
-                                resourceNameOrRouteName={resource.route}
-                                recordItemId={id}
-                            />
-                        )}
-                        {isDeleteButtonVisible && (
-                            <DeleteButton
-                                resourceNameOrRouteName={resource.route}
-                                data-testid="show-delete-button"
-                                recordItemId={id}
-                                onSuccess={() =>
-                                    list(resource.route ?? resource.name)
-                                }
-                            />
-                        )}
-                        <RefreshButton
+            <Group {...cardHeaderProps}>
+                <ActionIcon onClick={routeFromAction ? goBack : undefined}>
+                    <ArrowBack />
+                </ActionIcon>
+                <Text>
+                    {title
+                        ? title
+                        : translate(
+                              `${resource.name}.titles.show`,
+                              `Show ${userFriendlyResourceName(
+                                  resource.label ?? resource.name,
+                                  "singular",
+                              )}`,
+                          )}
+                </Text>
+                <Group sx={{ display: "flex" }}>
+                    {!recordItemId && (
+                        <ListButton
+                            data-testid="show-list-button"
+                            resourceNameOrRouteName={resource.route}
+                        />
+                    )}
+                    {isEditButtonVisible && (
+                        <EditButton
+                            disabled={isLoading}
+                            data-testid="show-edit-button"
                             resourceNameOrRouteName={resource.route}
                             recordItemId={id}
                         />
-                    </Box>
-                }
-                {...cardHeaderProps}
-            />
-            <CardContent {...cardContentProps}>{children}</CardContent>
-            <CardActions {...cardActionsProps}>
+                    )}
+                    {isDeleteButtonVisible && (
+                        <DeleteButton
+                            resourceNameOrRouteName={resource.route}
+                            data-testid="show-delete-button"
+                            recordItemId={id}
+                            onSuccess={() =>
+                                list(resource.route ?? resource.name)
+                            }
+                        />
+                    )}
+                    <RefreshButton
+                        resourceNameOrRouteName={resource.route}
+                        recordItemId={id}
+                    />
+                </Group>
+            </Group>
+            <Group {...cardContentProps}>{children}</Group>
+            <Group
+                {...cardActionsProps}
+                sx={{ display: "flex", justifyContent: "flex-end" }}
+            >
                 {actionButtons ? [actionButtons] : undefined}
-            </CardActions>
+            </Group>
         </Card>
     );
 };
