@@ -9,10 +9,10 @@ import {
     useRouterContext,
 } from "@pankod/refine-core";
 
-import { Button, ButtonProps } from "@mui/material";
-import AddBoxOutlinedIcon from "@mui/icons-material/AddBoxOutlined";
+import { Button, ButtonProps } from "@mantine/core";
+import { SquarePlus } from "tabler-icons-react";
 
-export type CloneButtonProps = ButtonProps & {
+export type CloneButtonProps = ButtonProps<"button"> & {
     resourceNameOrRouteName?: string;
     recordItemId?: BaseKey;
     hideText?: boolean;
@@ -80,12 +80,12 @@ export const CloneButton: React.FC<CloneButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                startIcon={!hideText && <AddBoxOutlinedIcon />}
+                leftIcon={!hideText && <SquarePlus />}
                 title={disabledTitle()}
                 {...rest}
             >
                 {hideText ? (
-                    <AddBoxOutlinedIcon />
+                    <SquarePlus />
                 ) : (
                     children ?? translate("buttons.clone", "Clone")
                 )}
