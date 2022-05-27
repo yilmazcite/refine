@@ -8,7 +8,7 @@ import {
     NotificationProviderProps,
 } from "@mantine/notifications";
 
-type MantineProviderProps = MantineBaseProviderProps & {
+export type MantineProviderProps = MantineBaseProviderProps & {
     notificationProps?: NotificationProviderProps;
 };
 

@@ -1,11 +1,7 @@
-import {
-    List as MantineList,
-    Title as MantineTitle,
-    MantineProvider as MantineBaseProvider,
-    MantineProviderProps as MantineBaseProviderProps,
-} from "@mantine/core";
+import { List as MantineList, Title as MantineTitle } from "@mantine/core";
+import type { MantineProviderProps as MantineBaseProviderProps } from "@mantine/core";
 import { List, Title } from "./components";
-import { MantineProvider } from "./providers";
+import { MantineProvider, MantineProviderProps } from "./providers";
 
 export * from "@mantine/core";
 
@@ -15,7 +11,7 @@ export {
     List,
     Title,
     MantineProvider,
-    MantineBaseProvider,
+    MantineProviderProps,
     MantineBaseProviderProps,
 };
 
