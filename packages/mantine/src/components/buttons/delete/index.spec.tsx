@@ -9,7 +9,7 @@ import {
     MockJSONServer,
     waitFor,
 } from "@test";
-import { DeleteButton } from "./";
+import { DeleteButton } from ".";
 
 describe("Delete Button", () => {
     const deleteFunc = jest.fn();

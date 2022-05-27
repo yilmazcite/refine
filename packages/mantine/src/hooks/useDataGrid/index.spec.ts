@@ -2,7 +2,7 @@ import { renderHook } from "@testing-library/react-hooks";
 
 import { TestWrapper } from "@test";
 
-import { useDataGrid } from "./";
+import { useDataGrid } from ".";
 import { CrudFilters } from "@pankod/refine-core";
 import { act } from "react-dom/test-utils";
 

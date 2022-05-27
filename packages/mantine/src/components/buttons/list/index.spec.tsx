@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { fireEvent, render, TestWrapper, waitFor } from "@test";
-import { ListButton } from "./";
+import { ListButton } from ".";
 
 describe("List Button", () => {
     const list = jest.fn();

@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { fireEvent, render, TestWrapper, waitFor } from "@test";
-import { CreateButton } from "./";
+import { CreateButton } from ".";
 
 describe("Create Button", () => {
     const create = jest.fn();

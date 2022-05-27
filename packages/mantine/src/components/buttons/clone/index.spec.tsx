@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import { fireEvent, render, TestWrapper, waitFor } from "@test";
-import { CloneButton } from "./";
+import { CloneButton } from ".";
 
 describe("Clone Button", () => {
     const clone = jest.fn();

@@ -1,7 +1,7 @@
 import React from "react";
 
 import { fireEvent, render, TestWrapper } from "@test";
-import { RefreshButton } from "./";
+import { RefreshButton } from ".";
 
 describe("Refresh Button", () => {
     const refresh = jest.fn();

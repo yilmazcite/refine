@@ -6,7 +6,7 @@ import { useImport } from "@pankod/refine-core";
 
 import { render, TestWrapper, MockJSONServer } from "@test";
 
-import { ImportButton } from "./";
+import { ImportButton } from ".";
 
 const parseMock = jest.fn();
 

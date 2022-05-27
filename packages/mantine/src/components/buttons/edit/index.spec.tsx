@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 import { fireEvent, render, TestWrapper, waitFor } from "@test";
-import { EditButton } from "./";
+import { EditButton } from ".";
 
 describe("Edit Button", () => {
     const edit = jest.fn();

@@ -3,7 +3,7 @@ import { renderHook } from "@testing-library/react-hooks";
 
 import { MockJSONServer, TestWrapper } from "@test";
 
-import { useMenu } from "./";
+import { useMenu } from ".";
 const DashboardPage = () => <div>dashboard</div>;
 
 describe("useMenu Hook", () => {
