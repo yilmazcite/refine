@@ -14,18 +14,14 @@ import {
 
 import {
     Card,
-    CardHeader,
-    IconButton,
-    CardContent,
-    CardActions,
     CardProps,
-    CardHeaderProps,
-    CardContentProps,
-    CardActionsProps,
-    Typography,
-} from "@mui/material";
-import { ButtonProps } from "@mantine/core";
-import ArrowBackIcon from "@mui/icons-material/ArrowBack";
+    Text,
+    Group,
+    ActionIcon,
+    ButtonProps,
+    GroupProps,
+} from "@mantine/core";
+import { ArrowBack } from "tabler-icons-react";
 
 import {
     DeleteButton,
@@ -44,10 +40,11 @@ export interface EditProps {
     deleteButtonProps?: DeleteButtonProps;
     resource?: string;
     isLoading?: boolean;
-    cardProps?: CardProps;
-    cardHeaderProps?: CardHeaderProps;
-    cardContentProps?: CardContentProps;
-    cardActionsProps?: CardActionsProps;
+    cardProps?: CardProps<"div">;
+    cardHeaderProps?: GroupProps;
+    cardActionsProps?: GroupProps;
+    cardContentProps?: GroupProps;
+    title?: string;
 }
 
 /**
@@ -67,8 +64,9 @@ export const Edit: React.FC<EditProps> = ({
     isLoading = false,
     cardProps,
     cardHeaderProps,
-    cardContentProps,
     cardActionsProps,
+    cardContentProps,
+    title,
 }) => {
     const translate = useTranslate();
 
@@ -97,43 +95,38 @@ export const Edit: React.FC<EditProps> = ({
 
     return (
         <Card {...cardProps}>
-            <CardHeader
-                title={
-                    <Typography variant="h5">
-                        {translate(
-                            `${resource.name}.titles.edit`,
-                            `Edit ${userFriendlyResourceName(
-                                resource.label ?? resource.name,
-                                "singular",
-                            )}`,
-                        )}
-                    </Typography>
-                }
-                avatar={
-                    <IconButton onClick={routeFromAction ? goBack : undefined}>
-                        <ArrowBackIcon />
-                    </IconButton>
-                }
-                action={
-                    <>
-                        {!recordItemId && (
-                            <ListButton
-                                data-testid="edit-list-button"
-                                resourceNameOrRouteName={resource.route}
-                            />
-                        )}
-                        <RefreshButton
+            <Group {...cardHeaderProps}>
+                <ActionIcon onClick={routeFromAction ? goBack : undefined}>
+                    <ArrowBack />
+                </ActionIcon>
+                <Text>
+                    {title
+                        ? title
+                        : translate(
+                              `${resource.name}.titles.edit`,
+                              `Edit ${userFriendlyResourceName(
+                                  resource.label ?? resource.name,
+                                  "singular",
+                              )}`,
+                          )}
+                </Text>
+                <>
+                    {!recordItemId && (
+                        <ListButton
+                            data-testid="edit-list-button"
                             resourceNameOrRouteName={resource.route}
-                            recordItemId={id}
                         />
-                    </>
-                }
-                {...cardHeaderProps}
-            />
-            <CardContent {...cardContentProps}>{children}</CardContent>
-            <CardActions
-                sx={{ display: "flex", justifyContent: "flex-end" }}
+                    )}
+                    <RefreshButton
+                        resourceNameOrRouteName={resource.route}
+                        recordItemId={id}
+                    />
+                </>
+            </Group>
+            <Group {...cardContentProps}>{children}</Group>
+            <Group
                 {...cardActionsProps}
+                sx={{ display: "flex", justifyContent: "flex-end" }}
             >
                 {actionButtons ?? (
                     <>
@@ -150,7 +143,7 @@ export const Edit: React.FC<EditProps> = ({
                         <SaveButton loading={isLoading} {...saveButtonProps} />
                     </>
                 )}
-            </CardActions>
+            </Group>
         </Card>
     );
 };
