@@ -18,8 +18,8 @@ module.exports = {
         ...pathsToModuleNameMapper(paths, { prefix: "<rootDir>/" }),
         "\\.css$": "identity-obj-proxy",
     },
-    name: "mui",
-    displayName: "mui",
+    name: "mantine",
+    displayName: "mantine",
     transform: {
         "^.+\\.svg$": "<rootDir>/test/svgTransform.ts",
     },
