@@ -8,7 +8,14 @@ import {
     userFriendlyResourceName,
     BaseKey,
 } from "@pankod/refine-core";
-import { Button, Stack, StackProps, Text } from "@chakra-ui/react";
+import {
+    Button,
+    Heading,
+    Stack,
+    StackProps,
+    Text,
+    Wrap,
+} from "@chakra-ui/react";
 import { ArrowBackIcon } from "@chakra-ui/icons";
 
 import {
@@ -73,7 +80,7 @@ export const Show: React.FC<ShowProps> = ({
 
     return (
         <>
-            <Stack {...stackProps}>
+            <Stack {...stackProps} bg="white" borderRadius="md" padding={4}>
                 <Stack
                     direction="row"
                     spacing={4}
@@ -83,8 +90,9 @@ export const Show: React.FC<ShowProps> = ({
                     <Button
                         onClick={routeFromAction ? goBack : undefined}
                         leftIcon={<ArrowBackIcon />}
+                        background="transparent"
                     />
-                    <Text fontWeight="semibold">
+                    <Heading fontWeight="semibold">
                         {translate(
                             `${resource.name}.titles.show`,
                             `Show ${userFriendlyResourceName(
@@ -92,12 +100,8 @@ export const Show: React.FC<ShowProps> = ({
                                 "singular",
                             )}`,
                         )}
-                    </Text>
-                    <Stack
-                        display={"flex"}
-                        justifyContent="flex-end"
-                        spacing={4}
-                    >
+                    </Heading>
+                    <Wrap>
                         {!recordItemId && (
                             <ListButton
                                 data-testid="show-list-button"
@@ -126,7 +130,7 @@ export const Show: React.FC<ShowProps> = ({
                             resourceNameOrRouteName={resource.route}
                             recordItemId={id}
                         />
-                    </Stack>
+                    </Wrap>
                 </Stack>
 
                 <Stack {...stackContentProps}>{children}</Stack>

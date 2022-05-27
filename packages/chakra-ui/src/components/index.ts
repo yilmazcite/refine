@@ -7,6 +7,6 @@ export {
     EditProps,
     Create,
     CreateProps,
-    Show,
-    ShowProps,
+    Show as RefineShow,
+    ShowProps as RefineShowProps,
 } from "./crud";
