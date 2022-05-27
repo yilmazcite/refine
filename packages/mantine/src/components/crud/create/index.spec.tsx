@@ -1,5 +1,5 @@
 import React, { ReactNode } from "react";
-import { Button } from "@mui/material";
+import { Button } from "@mantine/core";
 
 import { Route, Routes } from "react-router-dom";
 
@@ -68,9 +68,7 @@ describe("Create", () => {
     });
 
     it("should render optional title with title prop", async () => {
-        const { getByText } = renderCreate(
-            <Create cardHeaderProps={{ title: "New Title" }} />,
-        );
+        const { getByText } = renderCreate(<Create title="New Title" />);
 
         getByText("New Title");
     });

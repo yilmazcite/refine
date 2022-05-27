@@ -1,7 +1,7 @@
 import React, { ReactNode } from "react";
 import { Route, Routes } from "react-router-dom";
 import { AccessControlProvider } from "@pankod/refine-core";
-import { Button } from "@mui/material";
+import { Button } from "@mantine/core";
 
 import { render, TestWrapper, waitFor } from "@test";
 import { Edit } from "./";
@@ -92,13 +92,7 @@ describe("Edit", () => {
     });
 
     it("should render optional title with title prop", () => {
-        const { getByText } = renderEdit(
-            <Edit
-                cardHeaderProps={{
-                    title: "New Title",
-                }}
-            />,
-        );
+        const { getByText } = renderEdit(<Edit title="New Title" />);
 
         getByText("New Title");
     });
@@ -221,7 +215,7 @@ describe("Edit", () => {
                 <Routes>
                     <Route
                         path="/:resource/edit/:id"
-                        element={<Edit deleteButtonProps={{ size: "large" }} />}
+                        element={<Edit deleteButtonProps={{ size: "lg" }} />}
                     ></Route>
                 </Routes>,
                 {
