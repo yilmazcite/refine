@@ -9,10 +9,10 @@ import {
     useRouterContext,
 } from "@pankod/refine-core";
 
-import { Button, ButtonProps } from "@mui/material";
-import VisibilityOutlinedIcon from "@mui/icons-material/VisibilityOutlined";
+import { Button, ButtonProps } from "@mantine/core";
+import { Eye } from "tabler-icons-react";
 
-export type ShowButtonProps = ButtonProps & {
+export type ShowButtonProps = ButtonProps<"button"> & {
     resourceNameOrRouteName?: string;
     recordItemId?: BaseKey;
     hideText?: boolean;
@@ -80,12 +80,12 @@ export const ShowButton: React.FC<ShowButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                startIcon={!hideText && <VisibilityOutlinedIcon />}
+                leftIcon={!hideText && <Eye />}
                 title={disabledTitle()}
                 {...rest}
             >
                 {hideText ? (
-                    <VisibilityOutlinedIcon />
+                    <Eye />
                 ) : (
                     children ?? translate("buttons.show", "Show")
                 )}
