@@ -8,7 +8,6 @@ import {
     ResourceRouterParams,
 } from "@pankod/refine-core";
 import { Card, CardProps, Text, Group, GroupProps } from "@mantine/core";
-import { ArrowBack } from "tabler-icons-react";
 
 import { CreateButton, CreateButtonProps } from "@components";
 
