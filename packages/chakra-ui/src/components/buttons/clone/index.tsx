@@ -80,16 +80,12 @@ export const CloneButton: React.FC<CloneButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                startIcon={!hideText && <AddIcon />}
+                leftIcon={<AddIcon />}
                 variant="outline"
                 title={disabledTitle()}
                 {...rest}
             >
-                {hideText ? (
-                    <AddIcon />
-                ) : (
-                    children ?? translate("buttons.clone", "Clone")
-                )}
+                {!hideText && (children ?? translate("buttons.clone", "Clone"))}
             </Button>
         </Link>
     );

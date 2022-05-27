@@ -54,6 +54,7 @@ export {
     ResourceErrorRouterParams,
     ITreeMenu,
     IQueryKeys,
+    IResourceContext,
 } from "./interfaces";
 
 export {

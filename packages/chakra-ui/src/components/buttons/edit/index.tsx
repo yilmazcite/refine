@@ -78,16 +78,12 @@ export const EditButton: React.FC<EditButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                startIcon={!hideText && <EditIcon />}
+                leftIcon={<EditIcon />}
                 title={disabledTitle()}
                 variant="outline"
                 {...rest}
             >
-                {hideText ? (
-                    <EditIcon />
-                ) : (
-                    children ?? translate("buttons.edit", "Edit")
-                )}
+                {!hideText && (children ?? translate("buttons.edit", "Edit"))}
             </Button>
         </Link>
     );

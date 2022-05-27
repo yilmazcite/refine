@@ -53,17 +53,13 @@ export const RefreshButton: React.FC<RefreshButtonProps> = ({
 
     return (
         <Button
-            leftIcon={!hideText ? <RepeatIcon /> : undefined}
+            leftIcon={<RepeatIcon />}
             isLoading={isFetching}
             onClick={(e) => (onClick ? onClick(e) : refetch())}
             variant="outline"
             {...rest}
         >
-            {hideText ? (
-                <RepeatIcon />
-            ) : (
-                children ?? translate("buttons.refresh", "Refresh")
-            )}
+            {!hideText && (children ?? translate("buttons.refresh", "Refresh"))}
         </Button>
     );
 };

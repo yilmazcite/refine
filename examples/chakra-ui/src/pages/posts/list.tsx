@@ -1,124 +1,121 @@
-import {
-    IResourceComponentsProps,
-    useMany,
-    getDefaultFilter,
-} from "@pankod/refine-core";
+/* eslint-disable react/display-name */
+/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable react/jsx-key */
 
 import {
-    List,
-    Table,
-    TextField,
-    Space,
+    chakra,
+    DeleteButton,
     EditButton,
-    ShowButton,
-    FilterDropdown,
-    Select,
-    Radio,
-    TagField,
-} from "@pankod/refine-antd";
-
-import { useTable, useSelect } from "@pankod/refine-antd";
+    RefineList,
+    Table,
+    Tbody,
+    Td,
+    Th,
+    Thead,
+    Tr,
+} from "@pankod/refine-chakra-ui";
+import { IResourceComponentsProps } from "@pankod/refine-core";
+import {
+    useTable,
+    Column,
+    usePagination,
+    useSortBy,
+    useFilters,
+} from "@pankod/refine-react-table";
+import { useMemo } from "react";
+import { TriangleDownIcon, TriangleUpIcon } from "@chakra-ui/icons";
 
 import { IPost, ICategory } from "../../interfaces";
 
 export const PostList: React.FC<IResourceComponentsProps> = () => {
-    const { tableProps, filters } = useTable<IPost>({
-        syncWithLocation: true,
-    });
+    const columns: any = useMemo(
+        () => [
+            {
+                id: "id",
+                Header: "ID",
+                accessor: "id",
+            },
+            {
+                id: "title",
+                Header: "Title",
+                accessor: "title",
+                filter: "contains",
+            },
+            {
+                id: "status",
+                Header: "Status",
+                accessor: "status",
+            },
+            {
+                id: "createdAt",
+                Header: "CreatedAt",
+                accessor: "createdAt",
+            },
+            {
+                id: "actions",
+                Header: "Actions",
+                accessor: "id",
+                Cell: ({ value }: { value: string }) => {
+                    return (
+                        <>
+                            <EditButton size="sm" recordItemId={value} />
+                            <DeleteButton
+                                size="sm"
+                                recordItemId={value}
+                            ></DeleteButton>
+                        </>
+                    );
+                },
+            },
+        ],
+        [],
+    );
 
-    const categoryIds =
-        tableProps?.dataSource?.map((item) => item.category.id) ?? [];
-    const { data, isLoading } = useMany<ICategory>({
-        resource: "categories",
-        ids: categoryIds,
-        queryOptions: {
-            enabled: categoryIds.length > 0,
-        },
-    });
-
-    const { selectProps: categorySelectProps } = useSelect<ICategory>({
-        resource: "categories",
-        optionLabel: "title",
-        optionValue: "id",
-        defaultValue: getDefaultFilter("category.id", filters, "in"),
-    });
+    const { getTableProps, getTableBodyProps, headerGroups, prepareRow, rows } =
+        useTable<any>({ columns }, useFilters, useSortBy, usePagination);
 
     return (
-        <List>
-            <Table {...tableProps} rowKey="id">
-                <Table.Column dataIndex="id" title="ID" />
-                <Table.Column dataIndex="title" title="Title" />
-                <Table.Column
-                    dataIndex={["category", "id"]}
-                    title="Category"
-                    render={(value) => {
-                        if (isLoading) {
-                            return <TextField value="Loading..." />;
-                        }
-
+        <RefineList>
+            <Table {...getTableProps()}>
+                <Thead>
+                    {headerGroups.map((headerGroup) => (
+                        <Tr {...headerGroup.getHeaderGroupProps()}>
+                            {headerGroup.headers.map((column) => (
+                                <Th
+                                    {...column.getHeaderProps(
+                                        column.getSortByToggleProps(),
+                                    )}
+                                >
+                                    {column.render("Header")}
+                                    <chakra.span pl="4">
+                                        {column.isSorted ? (
+                                            column.isSortedDesc ? (
+                                                <TriangleDownIcon aria-label="sorted descending" />
+                                            ) : (
+                                                <TriangleUpIcon aria-label="sorted ascending" />
+                                            )
+                                        ) : null}
+                                    </chakra.span>
+                                </Th>
+                            ))}
+                        </Tr>
+                    ))}
+                </Thead>
+                <Tbody {...getTableBodyProps()}>
+                    {rows.map((row) => {
+                        prepareRow(row);
                         return (
-                            <TextField
-                                value={
-                                    data?.data.find((item) => item.id === value)
-                                        ?.title
-                                }
-                            />
+                            <Tr {...row.getRowProps()}>
+                                {row.cells.map((cell) => (
+                                    <Td {...cell.getCellProps()}>
+                                        {cell.render("Cell")}
+                                    </Td>
+                                ))}
+                            </Tr>
                         );
-                    }}
-                    filterDropdown={(props) => (
-                        <FilterDropdown
-                            {...props}
-                            mapValue={(selectedKeys) =>
-                                selectedKeys.map(Number)
-                            }
-                        >
-                            <Select
-                                style={{ minWidth: 200 }}
-                                mode="multiple"
-                                placeholder="Select Category"
-                                {...categorySelectProps}
-                            />
-                        </FilterDropdown>
-                    )}
-                    defaultFilteredValue={getDefaultFilter(
-                        "category.id",
-                        filters,
-                        "in",
-                    )}
-                />
-                <Table.Column
-                    dataIndex="status"
-                    title="Status"
-                    render={(value: string) => <TagField value={value} />}
-                    filterDropdown={(props: any) => (
-                        <FilterDropdown {...props}>
-                            <Radio.Group>
-                                <Radio value="published">Published</Radio>
-                                <Radio value="draft">Draft</Radio>
-                                <Radio value="rejected">Rejected</Radio>
-                            </Radio.Group>
-                        </FilterDropdown>
-                    )}
-                />
-                <Table.Column<IPost>
-                    title="Actions"
-                    dataIndex="actions"
-                    render={(_, record) => (
-                        <Space>
-                            <EditButton
-                                hideText
-                                size="small"
-                                recordItemId={record.id}
-                            />
-                            <ShowButton
-                                hideText
-                                size="small"
-                                recordItemId={record.id}
-                            />
-                        </Space>
-                    )}
-                />
+                    })}
+                </Tbody>
             </Table>
-        </List>
+        </RefineList>
     );
 };

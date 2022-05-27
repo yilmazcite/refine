@@ -21,16 +21,8 @@ export const SaveButton: React.FC<SaveButtonProps> = ({
     const translate = useTranslate();
 
     return (
-        <Button
-            startIcon={!hideText && <CheckIcon />}
-            variant="outline"
-            {...rest}
-        >
-            {hideText ? (
-                <CheckIcon />
-            ) : (
-                children ?? translate("buttons.save", "Save")
-            )}
+        <Button leftIcon={<CheckIcon />} variant="outline" {...rest}>
+            {!hideText && (children ?? translate("buttons.save", "Save"))}
         </Button>
     );
 };

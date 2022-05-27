@@ -2,6 +2,7 @@ import { Refine } from "@pankod/refine-core";
 import dataProvider from "@pankod/refine-simple-rest";
 import routerProvider from "@pankod/refine-react-router-v6";
 import { Layout, RefineList, Edit } from "@pankod/refine-chakra-ui";
+import { PostList, PostCreate } from "./pages/posts";
 
 const Hede = () => <RefineList>Page</RefineList>;
 const EditView = () => <Edit>Page</Edit>;
@@ -14,8 +15,8 @@ const App: React.FC = () => {
             resources={[
                 {
                     name: "posts",
-                    list: Hede,
-                    create: Hede,
+                    list: PostList,
+                    create: PostCreate,
                     edit: EditView,
                 },
                 {
@@ -32,19 +33,6 @@ const App: React.FC = () => {
                     options: {
                         label: "Mantine",
                     },
-                },
-                {
-                    name: "Sucks 👊",
-                    list: Hede,
-                    create: Hede,
-                    edit: EditView,
-                },
-                {
-                    name: "Test",
-                },
-                {
-                    parentName: "Test",
-                    name: "Test2",
                 },
             ]}
             Layout={Layout}

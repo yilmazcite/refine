@@ -74,23 +74,20 @@ export const ListButton: React.FC<ListButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                startIcon={!hideText && <HamburgerIcon />}
+                leftIcon={<HamburgerIcon />}
                 title={disabledTitle()}
                 variant="outline"
                 {...rest}
             >
-                {hideText ? (
-                    <HamburgerIcon />
-                ) : (
-                    children ??
-                    translate(
-                        `${resourceName}.titles.list`,
-                        userFriendlyResourceName(
-                            resource.label ?? resourceName,
-                            "plural",
-                        ),
-                    )
-                )}
+                {!hideText &&
+                    (children ??
+                        translate(
+                            `${resourceName}.titles.list`,
+                            userFriendlyResourceName(
+                                resource.label ?? resourceName,
+                                "plural",
+                            ),
+                        ))}
             </Button>
         </Link>
     );

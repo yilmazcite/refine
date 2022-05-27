@@ -74,16 +74,13 @@ export const CreateButton: React.FC<CreateButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                leftIcon={!hideText ? <AddIcon /> : undefined}
+                leftIcon={<AddIcon />}
                 title={disabledTitle()}
                 variant="outline"
                 {...rest}
             >
-                {hideText ? (
-                    <AddIcon />
-                ) : (
-                    children ?? translate("buttons.create", "Create")
-                )}
+                {!hideText &&
+                    (children ?? translate("buttons.create", "Create"))}
             </Button>
         </Link>
     );

@@ -27,15 +27,12 @@ export const ImportButton: React.FC<ImportButtonProps> = ({
         <label htmlFor="contained-button-file">
             <input {...inputProps} id="contained-button-file" multiple hidden />
             <Button
-                leftIcon={!hideText ? <ArrowUpIcon /> : undefined}
+                leftIcon={<ArrowUpIcon />}
                 isLoading={loading}
                 variant="outline"
             >
-                {hideText ? (
-                    <ArrowUpIcon />
-                ) : (
-                    children ?? translate("buttons.import", "Import")
-                )}
+                {!hideText &&
+                    (children ?? translate("buttons.import", "Import"))}
             </Button>
         </label>
     );

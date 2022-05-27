@@ -26,14 +26,10 @@ export const ExportButton: React.FC<ExportButtonProps> = ({
         <Button
             {...rest}
             isLoading={loading}
-            leftIcon={!hideText ? <DownloadIcon /> : undefined}
+            leftIcon={<DownloadIcon />}
             variant="outline"
         >
-            {hideText ? (
-                <DownloadIcon />
-            ) : (
-                children ?? translate("buttons.export", "Export")
-            )}
+            {!hideText && (children ?? translate("buttons.export", "Export"))}
         </Button>
     );
 };

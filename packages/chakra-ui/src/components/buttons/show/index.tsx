@@ -79,16 +79,12 @@ export const ShowButton: React.FC<ShowButtonProps> = ({
         >
             <Button
                 disabled={data?.can === false}
-                leftIcon={!hideText ? <ViewIcon /> : undefined}
+                leftIcon={<ViewIcon />}
                 title={disabledTitle()}
                 variant="outline"
                 {...rest}
             >
-                {hideText ? (
-                    <ViewIcon />
-                ) : (
-                    children ?? translate("buttons.show", "Show")
-                )}
+                {!hideText && (children ?? translate("buttons.show", "Show"))}
             </Button>
         </Link>
     );

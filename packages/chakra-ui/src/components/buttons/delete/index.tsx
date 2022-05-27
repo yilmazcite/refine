@@ -114,12 +114,11 @@ export const DeleteButton: React.FC<DeleteButtonProps> = ({
                         colorScheme="red"
                         onClick={onOpen}
                         variant="outline"
+                        leftIcon={<DeleteIcon />}
+                        {...rest}
                     >
-                        {hideText ? (
-                            <DeleteIcon />
-                        ) : (
-                            children ?? translate("buttons.delete", "Delete")
-                        )}
+                        {!hideText &&
+                            (children ?? translate("buttons.delete", "Delete"))}
                     </Button>
                 </PopoverTrigger>
                 <PopoverContent>
