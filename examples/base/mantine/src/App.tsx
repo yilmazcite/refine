@@ -36,6 +36,8 @@ const App: React.FC = () => {
         <MantineProvider theme={{ colorScheme: theme }}>
             <Refine
                 authProvider={authProvider}
+                // eslint-disable-next-line
+                // @ts-ignore
                 routerProvider={routerProvider}
                 dataProvider={dataProvider(API_URL)}
                 ReadyPage={ReadyPage}
