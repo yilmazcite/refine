@@ -52,6 +52,7 @@
         "tabler-icons-react": "^1.48.0",
         "@mantine/core": "^4.2.6",
         "@mantine/hooks": "^4.2.6",
+        "@mantine/notifications": "^4.2.6",
         "@pankod/refine-react-hook-form": "^3.16.0",
         "notistack": "^2.0.4",
         "dayjs": "^1.10.7",
