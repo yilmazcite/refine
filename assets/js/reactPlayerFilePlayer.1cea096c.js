@@ -120,6 +120,10 @@ var FilePlayer = /*#__PURE__*/function (_Component) {
       return (_this$props7 = _this.props).onError.apply(_this$props7, arguments);
     });
 
+    _defineProperty(_assertThisInitialized(_this), "onPlayBackRateChange", function (event) {
+      return _this.props.onPlaybackRateChange(event.target.playbackRate);
+    });
+
     _defineProperty(_assertThisInitialized(_this), "onEnablePIP", function () {
       var _this$props8;
 
@@ -236,6 +240,7 @@ var FilePlayer = /*#__PURE__*/function (_Component) {
       player.addEventListener('seeked', this.onSeek);
       player.addEventListener('ended', this.onEnded);
       player.addEventListener('error', this.onError);
+      player.addEventListener('ratechange', this.onPlayBackRateChange);
       player.addEventListener('enterpictureinpicture', this.onEnablePIP);
       player.addEventListener('leavepictureinpicture', this.onDisablePIP);
       player.addEventListener('webkitpresentationmodechanged', this.onPresentationModeChange);
@@ -262,6 +267,7 @@ var FilePlayer = /*#__PURE__*/function (_Component) {
       player.removeEventListener('seeked', this.onSeek);
       player.removeEventListener('ended', this.onEnded);
       player.removeEventListener('error', this.onError);
+      player.removeEventListener('ratechange', this.onPlayBackRateChange);
       player.removeEventListener('enterpictureinpicture', this.onEnablePIP);
       player.removeEventListener('leavepictureinpicture', this.onDisablePIP);
       player.removeEventListener('webkitpresentationmodechanged', this.onPresentationModeChange);
@@ -384,6 +390,10 @@ var FilePlayer = /*#__PURE__*/function (_Component) {
 
           _this2.flv.attachMediaElement(_this2.player);
 
+          _this2.flv.on(flvjs.Events.ERROR, function (e, data) {
+            _this2.props.onError(e, data, _this2.flv, flvjs);
+          });
+
           _this2.flv.load();
 
           _this2.props.onLoaded();
@@ -458,7 +468,11 @@ var FilePlayer = /*#__PURE__*/function (_Component) {
   }, {
     key: "setPlaybackRate",
     value: function setPlaybackRate(rate) {
-      this.player.playbackRate = rate;
+      try {
+        this.player.playbackRate = rate;
+      } catch (error) {
+        this.props.onError(error);
+      }
     }
   }, {
     key: "getDuration",

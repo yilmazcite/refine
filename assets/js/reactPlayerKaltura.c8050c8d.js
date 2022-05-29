@@ -1,9 +1,9 @@
 "use strict";
-exports.id = 55;
-exports.ids = [55];
+exports.id = 261;
+exports.ids = [261];
 exports.modules = {
 
-/***/ 13134:
+/***/ 49289:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -24,10 +24,6 @@ var _patterns = __webpack_require__(99790);
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } if (obj === null || _typeof(obj) !== "object" && typeof obj !== "function") { return { "default": obj }; } var cache = _getRequireWildcardCache(); if (cache && cache.has(obj)) { return cache.get(obj); } var newObj = {}; var hasPropertyDescriptor = Object.defineProperty && Object.getOwnPropertyDescriptor; for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { var desc = hasPropertyDescriptor ? Object.getOwnPropertyDescriptor(obj, key) : null; if (desc && (desc.get || desc.set)) { Object.defineProperty(newObj, key, desc); } else { newObj[key] = obj[key]; } } } newObj["default"] = obj; if (cache) { cache.set(obj, newObj); } return newObj; }
-
-function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
-
-function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(Object(source), true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(Object(source)).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -51,53 +47,32 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SDK_URL = 'https://fast.wistia.com/assets/external/E-v1.js';
-var SDK_GLOBAL = 'Wistia';
-var PLAYER_ID_PREFIX = 'wistia-player-';
+var SDK_URL = 'https://cdn.embed.ly/player-0.1.0.min.js';
+var SDK_GLOBAL = 'playerjs';
 
-var Wistia = /*#__PURE__*/function (_Component) {
-  _inherits(Wistia, _Component);
+var Kaltura = /*#__PURE__*/function (_Component) {
+  _inherits(Kaltura, _Component);
 
-  var _super = _createSuper(Wistia);
+  var _super = _createSuper(Kaltura);
 
-  function Wistia() {
+  function Kaltura() {
     var _this;
 
-    _classCallCheck(this, Wistia);
+    _classCallCheck(this, Kaltura);
 
-    for (var _len = arguments.length, _args = new Array(_len), _key = 0; _key < _len; _key++) {
-      _args[_key] = arguments[_key];
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
     }
 
-    _this = _super.call.apply(_super, [this].concat(_args));
+    _this = _super.call.apply(_super, [this].concat(args));
 
     _defineProperty(_assertThisInitialized(_this), "callPlayer", _utils.callPlayer);
 
-    _defineProperty(_assertThisInitialized(_this), "playerID", _this.props.config.playerId || "".concat(PLAYER_ID_PREFIX).concat((0, _utils.randomString)()));
+    _defineProperty(_assertThisInitialized(_this), "duration", null);
 
-    _defineProperty(_assertThisInitialized(_this), "onPlay", function () {
-      var _this$props;
+    _defineProperty(_assertThisInitialized(_this), "currentTime", null);
 
-      return (_this$props = _this.props).onPlay.apply(_this$props, arguments);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onPause", function () {
-      var _this$props2;
-
-      return (_this$props2 = _this.props).onPause.apply(_this$props2, arguments);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onSeek", function () {
-      var _this$props3;
-
-      return (_this$props3 = _this.props).onSeek.apply(_this$props3, arguments);
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "onEnded", function () {
-      var _this$props4;
-
-      return (_this$props4 = _this.props).onEnded.apply(_this$props4, arguments);
-    });
+    _defineProperty(_assertThisInitialized(_this), "secondsLoaded", null);
 
     _defineProperty(_assertThisInitialized(_this), "mute", function () {
       _this.callPlayer('mute');
@@ -107,10 +82,14 @@ var Wistia = /*#__PURE__*/function (_Component) {
       _this.callPlayer('unmute');
     });
 
+    _defineProperty(_assertThisInitialized(_this), "ref", function (iframe) {
+      _this.iframe = iframe;
+    });
+
     return _this;
   }
 
-  _createClass(Wistia, [{
+  _createClass(Kaltura, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.onMount && this.props.onMount(this);
@@ -120,64 +99,45 @@ var Wistia = /*#__PURE__*/function (_Component) {
     value: function load(url) {
       var _this2 = this;
 
-      var _this$props5 = this.props,
-          playing = _this$props5.playing,
-          muted = _this$props5.muted,
-          controls = _this$props5.controls,
-          _onReady = _this$props5.onReady,
-          config = _this$props5.config,
-          onError = _this$props5.onError;
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (Wistia) {
-        if (config.customControls) {
-          config.customControls.forEach(function (control) {
-            return Wistia.defineControl(control);
-          });
-        }
+      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (playerjs) {
+        if (!_this2.iframe) return;
+        _this2.player = new playerjs.Player(_this2.iframe);
 
-        window._wq = window._wq || [];
+        _this2.player.on('ready', function () {
+          // An arbitrary timeout is required otherwise
+          // the event listeners won’t work
+          setTimeout(function () {
+            _this2.player.isReady = true;
 
-        window._wq.push({
-          id: _this2.playerID,
-          options: _objectSpread({
-            autoPlay: playing,
-            silentAutoPlay: 'allow',
-            muted: muted,
-            controlsVisibleOnLoad: controls,
-            fullscreenButton: controls,
-            playbar: controls,
-            playbackRateControl: controls,
-            qualityControl: controls,
-            volumeControl: controls,
-            settingsControl: controls,
-            smallPlayButton: controls
-          }, config.options),
-          onReady: function onReady(player) {
-            _this2.player = player;
+            _this2.player.setLoop(_this2.props.loop);
 
-            _this2.unbind();
+            if (_this2.props.muted) {
+              _this2.player.mute();
+            }
 
-            _this2.player.bind('play', _this2.onPlay);
+            _this2.addListeners(_this2.player, _this2.props);
 
-            _this2.player.bind('pause', _this2.onPause);
-
-            _this2.player.bind('seek', _this2.onSeek);
-
-            _this2.player.bind('end', _this2.onEnded);
-
-            _onReady();
-          }
+            _this2.props.onReady();
+          }, 500);
         });
-      }, onError);
+      }, this.props.onError);
     }
   }, {
-    key: "unbind",
-    value: function unbind() {
-      this.player.unbind('play', this.onPlay);
-      this.player.unbind('pause', this.onPause);
-      this.player.unbind('seek', this.onSeek);
-      this.player.unbind('end', this.onEnded);
-    } // Proxy methods to prevent listener leaks
+    key: "addListeners",
+    value: function addListeners(player, props) {
+      var _this3 = this;
 
+      player.on('play', props.onPlay);
+      player.on('pause', props.onPause);
+      player.on('ended', props.onEnded);
+      player.on('error', props.onError);
+      player.on('timeupdate', function (_ref) {
+        var duration = _ref.duration,
+            seconds = _ref.seconds;
+        _this3.duration = duration;
+        _this3.currentTime = seconds;
+      });
+    }
   }, {
     key: "play",
     value: function play() {
@@ -190,69 +150,65 @@ var Wistia = /*#__PURE__*/function (_Component) {
     }
   }, {
     key: "stop",
-    value: function stop() {
-      this.unbind();
-      this.callPlayer('remove');
+    value: function stop() {// Nothing to do
     }
   }, {
     key: "seekTo",
     value: function seekTo(seconds) {
-      this.callPlayer('time', seconds);
+      this.callPlayer('setCurrentTime', seconds);
     }
   }, {
     key: "setVolume",
     value: function setVolume(fraction) {
-      this.callPlayer('volume', fraction);
+      this.callPlayer('setVolume', fraction);
     }
   }, {
-    key: "setPlaybackRate",
-    value: function setPlaybackRate(rate) {
-      this.callPlayer('playbackRate', rate);
+    key: "setLoop",
+    value: function setLoop(loop) {
+      this.callPlayer('setLoop', loop);
     }
   }, {
     key: "getDuration",
     value: function getDuration() {
-      return this.callPlayer('duration');
+      return this.duration;
     }
   }, {
     key: "getCurrentTime",
     value: function getCurrentTime() {
-      return this.callPlayer('time');
+      return this.currentTime;
     }
   }, {
     key: "getSecondsLoaded",
     value: function getSecondsLoaded() {
-      return null;
+      return this.secondsLoaded;
     }
   }, {
     key: "render",
     value: function render() {
-      var url = this.props.url;
-      var videoID = url && url.match(_patterns.MATCH_URL_WISTIA)[1];
-      var className = "wistia_embed wistia_async_".concat(videoID);
       var style = {
         width: '100%',
         height: '100%'
       };
-      return /*#__PURE__*/_react["default"].createElement("div", {
-        id: this.playerID,
-        key: videoID,
-        className: className,
-        style: style
+      return /*#__PURE__*/_react["default"].createElement("iframe", {
+        ref: this.ref,
+        src: this.props.url,
+        frameBorder: "0",
+        scrolling: "no",
+        style: style,
+        allow: "encrypted-media; autoplay; fullscreen;",
+        referrerPolicy: "no-referrer-when-downgrade"
       });
     }
   }]);
 
-  return Wistia;
+  return Kaltura;
 }(_react.Component);
 
-exports["default"] = Wistia;
+exports["default"] = Kaltura;
 
-_defineProperty(Wistia, "displayName", 'Wistia');
+_defineProperty(Kaltura, "displayName", 'Kaltura');
 
-_defineProperty(Wistia, "canPlay", _patterns.canPlay.wistia);
-
-_defineProperty(Wistia, "loopOnEnded", true);
+_defineProperty(Kaltura, "canPlay", _patterns.canPlay.kaltura);
 
 /***/ })
 

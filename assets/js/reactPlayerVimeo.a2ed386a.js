@@ -1,9 +1,9 @@
 "use strict";
-exports.id = 216;
-exports.ids = [216];
+exports.id = 743;
+exports.ids = [743];
 exports.modules = {
 
-/***/ 89743:
+/***/ 86746:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -51,19 +51,18 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SDK_URL = 'https://player.twitch.tv/js/embed/v1.js';
-var SDK_GLOBAL = 'Twitch';
-var PLAYER_ID_PREFIX = 'twitch-player-';
+var SDK_URL = 'https://player.vimeo.com/api/player.js';
+var SDK_GLOBAL = 'Vimeo';
 
-var Twitch = /*#__PURE__*/function (_Component) {
-  _inherits(Twitch, _Component);
+var Vimeo = /*#__PURE__*/function (_Component) {
+  _inherits(Vimeo, _Component);
 
-  var _super = _createSuper(Twitch);
+  var _super = _createSuper(Vimeo);
 
-  function Twitch() {
+  function Vimeo() {
     var _this;
 
-    _classCallCheck(this, Twitch);
+    _classCallCheck(this, Vimeo);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -73,88 +72,119 @@ var Twitch = /*#__PURE__*/function (_Component) {
 
     _defineProperty(_assertThisInitialized(_this), "callPlayer", _utils.callPlayer);
 
-    _defineProperty(_assertThisInitialized(_this), "playerID", _this.props.config.playerId || "".concat(PLAYER_ID_PREFIX).concat((0, _utils.randomString)()));
+    _defineProperty(_assertThisInitialized(_this), "duration", null);
+
+    _defineProperty(_assertThisInitialized(_this), "currentTime", null);
+
+    _defineProperty(_assertThisInitialized(_this), "secondsLoaded", null);
 
     _defineProperty(_assertThisInitialized(_this), "mute", function () {
-      _this.callPlayer('setMuted', true);
+      _this.setVolume(0);
     });
 
     _defineProperty(_assertThisInitialized(_this), "unmute", function () {
-      _this.callPlayer('setMuted', false);
+      if (_this.props.volume !== null) {
+        _this.setVolume(_this.props.volume);
+      }
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "ref", function (container) {
+      _this.container = container;
     });
 
     return _this;
   }
 
-  _createClass(Twitch, [{
+  _createClass(Vimeo, [{
     key: "componentDidMount",
     value: function componentDidMount() {
       this.props.onMount && this.props.onMount(this);
     }
   }, {
     key: "load",
-    value: function load(url, isReady) {
+    value: function load(url) {
       var _this2 = this;
 
-      var _this$props = this.props,
-          playsinline = _this$props.playsinline,
-          onError = _this$props.onError,
-          config = _this$props.config,
-          controls = _this$props.controls;
-
-      var isChannel = _patterns.MATCH_URL_TWITCH_CHANNEL.test(url);
-
-      var id = isChannel ? url.match(_patterns.MATCH_URL_TWITCH_CHANNEL)[1] : url.match(_patterns.MATCH_URL_TWITCH_VIDEO)[1];
-
-      if (isReady) {
-        if (isChannel) {
-          this.player.setChannel(id);
-        } else {
-          this.player.setVideo('v' + id);
-        }
-
-        return;
-      }
-
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (Twitch) {
-        _this2.player = new Twitch.Player(_this2.playerID, _objectSpread({
-          video: isChannel ? '' : id,
-          channel: isChannel ? id : '',
-          height: '100%',
-          width: '100%',
-          playsinline: playsinline,
+      this.duration = null;
+      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (Vimeo) {
+        if (!_this2.container) return;
+        var _this2$props$config = _this2.props.config,
+            playerOptions = _this2$props$config.playerOptions,
+            title = _this2$props$config.title;
+        _this2.player = new Vimeo.Player(_this2.container, _objectSpread({
+          url: url,
           autoplay: _this2.props.playing,
           muted: _this2.props.muted,
-          // https://github.com/CookPete/react-player/issues/733#issuecomment-549085859
-          controls: isChannel ? true : controls,
-          time: (0, _utils.parseStartTime)(url)
-        }, config.options));
-        var _Twitch$Player = Twitch.Player,
-            READY = _Twitch$Player.READY,
-            PLAYING = _Twitch$Player.PLAYING,
-            PAUSE = _Twitch$Player.PAUSE,
-            ENDED = _Twitch$Player.ENDED,
-            ONLINE = _Twitch$Player.ONLINE,
-            OFFLINE = _Twitch$Player.OFFLINE;
+          loop: _this2.props.loop,
+          playsinline: _this2.props.playsinline,
+          controls: _this2.props.controls
+        }, playerOptions));
 
-        _this2.player.addEventListener(READY, _this2.props.onReady);
+        _this2.player.ready().then(function () {
+          var iframe = _this2.container.querySelector('iframe');
 
-        _this2.player.addEventListener(PLAYING, _this2.props.onPlay);
+          iframe.style.width = '100%';
+          iframe.style.height = '100%';
 
-        _this2.player.addEventListener(PAUSE, _this2.props.onPause);
+          if (title) {
+            iframe.title = title;
+          }
+        })["catch"](_this2.props.onError);
 
-        _this2.player.addEventListener(ENDED, _this2.props.onEnded); // Prevent weird isLoading behaviour when streams are offline
+        _this2.player.on('loaded', function () {
+          _this2.props.onReady();
 
+          _this2.refreshDuration();
+        });
 
-        _this2.player.addEventListener(ONLINE, _this2.props.onLoaded);
+        _this2.player.on('play', function () {
+          _this2.props.onPlay();
 
-        _this2.player.addEventListener(OFFLINE, _this2.props.onLoaded);
-      }, onError);
+          _this2.refreshDuration();
+        });
+
+        _this2.player.on('pause', _this2.props.onPause);
+
+        _this2.player.on('seeked', function (e) {
+          return _this2.props.onSeek(e.seconds);
+        });
+
+        _this2.player.on('ended', _this2.props.onEnded);
+
+        _this2.player.on('error', _this2.props.onError);
+
+        _this2.player.on('timeupdate', function (_ref) {
+          var seconds = _ref.seconds;
+          _this2.currentTime = seconds;
+        });
+
+        _this2.player.on('progress', function (_ref2) {
+          var seconds = _ref2.seconds;
+          _this2.secondsLoaded = seconds;
+        });
+
+        _this2.player.on('bufferstart', _this2.props.onBuffer);
+
+        _this2.player.on('bufferend', _this2.props.onBufferEnd);
+      }, this.props.onError);
+    }
+  }, {
+    key: "refreshDuration",
+    value: function refreshDuration() {
+      var _this3 = this;
+
+      this.player.getDuration().then(function (duration) {
+        _this3.duration = duration;
+      });
     }
   }, {
     key: "play",
     value: function play() {
-      this.callPlayer('play');
+      var promise = this.callPlayer('play');
+
+      if (promise) {
+        promise["catch"](this.props.onError);
+      }
     }
   }, {
     key: "pause",
@@ -164,12 +194,12 @@ var Twitch = /*#__PURE__*/function (_Component) {
   }, {
     key: "stop",
     value: function stop() {
-      this.callPlayer('pause');
+      this.callPlayer('unload');
     }
   }, {
     key: "seekTo",
     value: function seekTo(seconds) {
-      this.callPlayer('seek', seconds);
+      this.callPlayer('setCurrentTime', seconds);
     }
   }, {
     key: "setVolume",
@@ -177,44 +207,58 @@ var Twitch = /*#__PURE__*/function (_Component) {
       this.callPlayer('setVolume', fraction);
     }
   }, {
+    key: "setLoop",
+    value: function setLoop(loop) {
+      this.callPlayer('setLoop', loop);
+    }
+  }, {
+    key: "setPlaybackRate",
+    value: function setPlaybackRate(rate) {
+      this.callPlayer('setPlaybackRate', rate);
+    }
+  }, {
     key: "getDuration",
     value: function getDuration() {
-      return this.callPlayer('getDuration');
+      return this.duration;
     }
   }, {
     key: "getCurrentTime",
     value: function getCurrentTime() {
-      return this.callPlayer('getCurrentTime');
+      return this.currentTime;
     }
   }, {
     key: "getSecondsLoaded",
     value: function getSecondsLoaded() {
-      return null;
+      return this.secondsLoaded;
     }
   }, {
     key: "render",
     value: function render() {
+      var display = this.props.display;
       var style = {
         width: '100%',
-        height: '100%'
+        height: '100%',
+        overflow: 'hidden',
+        display: display
       };
       return /*#__PURE__*/_react["default"].createElement("div", {
-        style: style,
-        id: this.playerID
+        key: this.props.url,
+        ref: this.ref,
+        style: style
       });
     }
   }]);
 
-  return Twitch;
+  return Vimeo;
 }(_react.Component);
 
-exports["default"] = Twitch;
+exports["default"] = Vimeo;
 
-_defineProperty(Twitch, "displayName", 'Twitch');
+_defineProperty(Vimeo, "displayName", 'Vimeo');
 
-_defineProperty(Twitch, "canPlay", _patterns.canPlay.twitch);
+_defineProperty(Vimeo, "canPlay", _patterns.canPlay.vimeo);
 
-_defineProperty(Twitch, "loopOnEnded", true);
+_defineProperty(Vimeo, "forceLoad", true);
 
 /***/ })
 

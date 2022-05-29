@@ -195,7 +195,7 @@ var Streamable = /*#__PURE__*/function (_Component) {
         frameBorder: "0",
         scrolling: "no",
         style: style,
-        allowFullScreen: true
+        allow: "encrypted-media; autoplay; fullscreen;"
       });
     }
   }]);

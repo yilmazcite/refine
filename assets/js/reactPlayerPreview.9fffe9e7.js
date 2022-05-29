@@ -1,9 +1,9 @@
 "use strict";
-exports.id = 743;
-exports.ids = [743];
+exports.id = 664;
+exports.ids = [664];
 exports.modules = {
 
-/***/ 86746:
+/***/ 57284:
 /***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 
@@ -16,10 +16,6 @@ Object.defineProperty(exports, "__esModule", ({
 exports["default"] = void 0;
 
 var _react = _interopRequireWildcard(__webpack_require__(67294));
-
-var _utils = __webpack_require__(56281);
-
-var _patterns = __webpack_require__(99790);
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function _getRequireWildcardCache() { return cache; }; return cache; }
 
@@ -51,18 +47,18 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
-var SDK_URL = 'https://player.vimeo.com/api/player.js';
-var SDK_GLOBAL = 'Vimeo';
+var ICON_SIZE = '64px';
+var cache = {};
 
-var Vimeo = /*#__PURE__*/function (_Component) {
-  _inherits(Vimeo, _Component);
+var Preview = /*#__PURE__*/function (_Component) {
+  _inherits(Preview, _Component);
 
-  var _super = _createSuper(Vimeo);
+  var _super = _createSuper(Preview);
 
-  function Vimeo() {
+  function Preview() {
     var _this;
 
-    _classCallCheck(this, Vimeo);
+    _classCallCheck(this, Preview);
 
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
       args[_key] = arguments[_key];
@@ -70,188 +66,141 @@ var Vimeo = /*#__PURE__*/function (_Component) {
 
     _this = _super.call.apply(_super, [this].concat(args));
 
-    _defineProperty(_assertThisInitialized(_this), "callPlayer", _utils.callPlayer);
+    _defineProperty(_assertThisInitialized(_this), "mounted", false);
 
-    _defineProperty(_assertThisInitialized(_this), "duration", null);
-
-    _defineProperty(_assertThisInitialized(_this), "currentTime", null);
-
-    _defineProperty(_assertThisInitialized(_this), "secondsLoaded", null);
-
-    _defineProperty(_assertThisInitialized(_this), "mute", function () {
-      _this.setVolume(0);
+    _defineProperty(_assertThisInitialized(_this), "state", {
+      image: null
     });
 
-    _defineProperty(_assertThisInitialized(_this), "unmute", function () {
-      if (_this.props.volume !== null) {
-        _this.setVolume(_this.props.volume);
+    _defineProperty(_assertThisInitialized(_this), "handleKeyPress", function (e) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        _this.props.onClick();
       }
-    });
-
-    _defineProperty(_assertThisInitialized(_this), "ref", function (container) {
-      _this.container = container;
     });
 
     return _this;
   }
 
-  _createClass(Vimeo, [{
+  _createClass(Preview, [{
     key: "componentDidMount",
     value: function componentDidMount() {
-      this.props.onMount && this.props.onMount(this);
+      this.mounted = true;
+      this.fetchImage(this.props);
     }
   }, {
-    key: "load",
-    value: function load(url) {
-      var _this2 = this;
+    key: "componentDidUpdate",
+    value: function componentDidUpdate(prevProps) {
+      var _this$props = this.props,
+          url = _this$props.url,
+          light = _this$props.light;
 
-      this.duration = null;
-      (0, _utils.getSDK)(SDK_URL, SDK_GLOBAL).then(function (Vimeo) {
-        if (!_this2.container) return;
-        _this2.player = new Vimeo.Player(_this2.container, _objectSpread({
-          url: url,
-          autoplay: _this2.props.playing,
-          muted: _this2.props.muted,
-          loop: _this2.props.loop,
-          playsinline: _this2.props.playsinline,
-          controls: _this2.props.controls
-        }, _this2.props.config.playerOptions));
-
-        _this2.player.ready().then(function () {
-          var iframe = _this2.container.querySelector('iframe');
-
-          iframe.style.width = '100%';
-          iframe.style.height = '100%';
-        })["catch"](_this2.props.onError);
-
-        _this2.player.on('loaded', function () {
-          _this2.props.onReady();
-
-          _this2.refreshDuration();
-        });
-
-        _this2.player.on('play', function () {
-          _this2.props.onPlay();
-
-          _this2.refreshDuration();
-        });
-
-        _this2.player.on('pause', _this2.props.onPause);
-
-        _this2.player.on('seeked', function (e) {
-          return _this2.props.onSeek(e.seconds);
-        });
-
-        _this2.player.on('ended', _this2.props.onEnded);
-
-        _this2.player.on('error', _this2.props.onError);
-
-        _this2.player.on('timeupdate', function (_ref) {
-          var seconds = _ref.seconds;
-          _this2.currentTime = seconds;
-        });
-
-        _this2.player.on('progress', function (_ref2) {
-          var seconds = _ref2.seconds;
-          _this2.secondsLoaded = seconds;
-        });
-
-        _this2.player.on('bufferstart', _this2.props.onBuffer);
-
-        _this2.player.on('bufferend', _this2.props.onBufferEnd);
-      }, this.props.onError);
-    }
-  }, {
-    key: "refreshDuration",
-    value: function refreshDuration() {
-      var _this3 = this;
-
-      this.player.getDuration().then(function (duration) {
-        _this3.duration = duration;
-      });
-    }
-  }, {
-    key: "play",
-    value: function play() {
-      var promise = this.callPlayer('play');
-
-      if (promise) {
-        promise["catch"](this.props.onError);
+      if (prevProps.url !== url || prevProps.light !== light) {
+        this.fetchImage(this.props);
       }
     }
   }, {
-    key: "pause",
-    value: function pause() {
-      this.callPlayer('pause');
+    key: "componentWillUnmount",
+    value: function componentWillUnmount() {
+      this.mounted = false;
     }
   }, {
-    key: "stop",
-    value: function stop() {
-      this.callPlayer('unload');
-    }
-  }, {
-    key: "seekTo",
-    value: function seekTo(seconds) {
-      this.callPlayer('setCurrentTime', seconds);
-    }
-  }, {
-    key: "setVolume",
-    value: function setVolume(fraction) {
-      this.callPlayer('setVolume', fraction);
-    }
-  }, {
-    key: "setLoop",
-    value: function setLoop(loop) {
-      this.callPlayer('setLoop', loop);
-    }
-  }, {
-    key: "setPlaybackRate",
-    value: function setPlaybackRate(rate) {
-      this.callPlayer('setPlaybackRate', rate);
-    }
-  }, {
-    key: "getDuration",
-    value: function getDuration() {
-      return this.duration;
-    }
-  }, {
-    key: "getCurrentTime",
-    value: function getCurrentTime() {
-      return this.currentTime;
-    }
-  }, {
-    key: "getSecondsLoaded",
-    value: function getSecondsLoaded() {
-      return this.secondsLoaded;
+    key: "fetchImage",
+    value: function fetchImage(_ref) {
+      var _this2 = this;
+
+      var url = _ref.url,
+          light = _ref.light,
+          oEmbedUrl = _ref.oEmbedUrl;
+
+      if (typeof light === 'string') {
+        this.setState({
+          image: light
+        });
+        return;
+      }
+
+      if (cache[url]) {
+        this.setState({
+          image: cache[url]
+        });
+        return;
+      }
+
+      this.setState({
+        image: null
+      });
+      return window.fetch(oEmbedUrl.replace('{url}', url)).then(function (response) {
+        return response.json();
+      }).then(function (data) {
+        if (data.thumbnail_url && _this2.mounted) {
+          var image = data.thumbnail_url.replace('height=100', 'height=480');
+
+          _this2.setState({
+            image: image
+          });
+
+          cache[url] = image;
+        }
+      });
     }
   }, {
     key: "render",
     value: function render() {
-      var display = this.props.display;
-      var style = {
-        width: '100%',
-        height: '100%',
-        overflow: 'hidden',
-        display: display
+      var _this$props2 = this.props,
+          onClick = _this$props2.onClick,
+          playIcon = _this$props2.playIcon,
+          previewTabIndex = _this$props2.previewTabIndex;
+      var image = this.state.image;
+      var flexCenter = {
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center'
       };
+      var styles = {
+        preview: _objectSpread({
+          width: '100%',
+          height: '100%',
+          backgroundImage: image ? "url(".concat(image, ")") : undefined,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          cursor: 'pointer'
+        }, flexCenter),
+        shadow: _objectSpread({
+          background: 'radial-gradient(rgb(0, 0, 0, 0.3), rgba(0, 0, 0, 0) 60%)',
+          borderRadius: ICON_SIZE,
+          width: ICON_SIZE,
+          height: ICON_SIZE
+        }, flexCenter),
+        playIcon: {
+          borderStyle: 'solid',
+          borderWidth: '16px 0 16px 26px',
+          borderColor: 'transparent transparent transparent white',
+          marginLeft: '7px'
+        }
+      };
+
+      var defaultPlayIcon = /*#__PURE__*/_react["default"].createElement("div", {
+        style: styles.shadow,
+        className: "react-player__shadow"
+      }, /*#__PURE__*/_react["default"].createElement("div", {
+        style: styles.playIcon,
+        className: "react-player__play-icon"
+      }));
+
       return /*#__PURE__*/_react["default"].createElement("div", {
-        key: this.props.url,
-        ref: this.ref,
-        style: style
-      });
+        style: styles.preview,
+        className: "react-player__preview",
+        onClick: onClick,
+        tabIndex: previewTabIndex,
+        onKeyPress: this.handleKeyPress
+      }, playIcon || defaultPlayIcon);
     }
   }]);
 
-  return Vimeo;
+  return Preview;
 }(_react.Component);
 
-exports["default"] = Vimeo;
-
-_defineProperty(Vimeo, "displayName", 'Vimeo');
-
-_defineProperty(Vimeo, "canPlay", _patterns.canPlay.vimeo);
-
-_defineProperty(Vimeo, "forceLoad", true);
+exports["default"] = Preview;
 
 /***/ })
 
