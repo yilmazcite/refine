@@ -4,10 +4,17 @@
         <title>refine Blog</title>
         <link>https://refine.dev/blog</link>
         <description>refine Blog</description>
-        <lastBuildDate>Mon, 23 May 2022 00:00:00 GMT</lastBuildDate>
+        <lastBuildDate>Fri, 10 Jun 2022 00:00:00 GMT</lastBuildDate>
         <docs>https://validator.w3.org/feed/docs/rss2.html</docs>
         <generator>https://github.com/jpmonette/feed</generator>
         <copyright>Copyright © 2022 refine.</copyright>
+        <item>
+            <title><![CDATA[We’ve raised $1M in Seed Funding! 🚀 🚀 🚀]]></title>
+            <link>https://refine.dev/blog/weve-raised-dollar1m-seed-funding</link>
+            <guid>weve-raised-dollar1m-seed-funding</guid>
+            <pubDate>Fri, 10 Jun 2022 00:00:00 GMT</pubDate>
+            <description><![CDATA[Learn about the top React component libraries and frameworks.]]></description>
+        </item>
         <item>
             <title><![CDATA[Build Access Control Mechanism using Permify]]></title>
             <link>https://refine.dev/blog/build-access-control-permify</link>

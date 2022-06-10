@@ -2,12 +2,19 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://refine.dev/blog</id>
     <title>refine Blog</title>
-    <updated>2022-05-23T00:00:00.000Z</updated>
+    <updated>2022-06-10T00:00:00.000Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://refine.dev/blog"/>
     <subtitle>refine Blog</subtitle>
     <icon>https://refine.dev/img/refine_favicon.png</icon>
     <rights>Copyright © 2022 refine.</rights>
+    <entry>
+        <title type="html"><![CDATA[We’ve raised $1M in Seed Funding! 🚀 🚀 🚀]]></title>
+        <id>weve-raised-dollar1m-seed-funding</id>
+        <link href="https://refine.dev/blog/weve-raised-dollar1m-seed-funding"/>
+        <updated>2022-06-10T00:00:00.000Z</updated>
+        <summary type="html"><![CDATA[Learn about the top React component libraries and frameworks.]]></summary>
+    </entry>
     <entry>
         <title type="html"><![CDATA[Build Access Control Mechanism using Permify]]></title>
         <id>build-access-control-permify</id>
