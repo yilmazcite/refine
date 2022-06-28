@@ -712,7 +712,7 @@ export const PostList: React.FC = () => {
                 type: "number",
                 minWidth: 250,
                 flex: 1,
-                valueGetter: (params) => {
+                renderCell: function render(params) {
                     const { data } = useOne<ICategory>({
                         resource: "categories",
                         id: params.row.category.id,
@@ -756,7 +756,7 @@ export const PostList: React.FC = () => {
 };
 ```
 
-We access the row record with `valueGetter` and pass categoryId to the `useOne` hook. `useOne` hook returns a `data` object which contains the category title.
+We access the row record with `renderCell` and pass categoryId to the `useOne` hook. `useOne` hook returns a `data` object which contains the category title.
 
 Try the result on your browser and you'll notice that the category column is filled correctly with the matching category titles for the each record's category id's. Even the loading state is managed by **refine**.
 
@@ -934,7 +934,7 @@ export const PostList: React.FC = () => {
                 type: "number",
                 minWidth: 250,
                 flex: 1,
-                valueGetter: (params) => {
+                renderCell: function render(params) {
                     const { data } = useOne<ICategory>({
                         resource: "categories",
                         id: params.row.category.id,
@@ -1238,7 +1238,7 @@ export const PostList: React.FC = () => {
                 type: "number",
                 minWidth: 250,
                 flex: 1,
-                valueGetter: (params) => {
+                renderCell: function render(params) {
                     const { data } = useOne<ICategory>({
                         resource: "categories",
                         id: params.row.category.id,
@@ -1539,7 +1539,7 @@ export const PostList: React.FC = () => {
                 headerName: "Category",
                 type: "number",
                 minWidth: 250,
-                valueGetter: (params) => {
+                renderCell: function render(params) {
                     const { data } = useOne<ICategory>({
                         resource: "categories",
                         id: params.row.category.id,
